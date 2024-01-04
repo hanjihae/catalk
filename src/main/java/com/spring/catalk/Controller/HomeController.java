@@ -5,8 +5,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
-    @GetMapping(path = {"/"}) // FrontController에 연결 설정
+    @GetMapping(path = {"/"})
     public String login() {
-        return "login"; // /WEB-INF/views/ + home + .jsp
+        return "login";
+    }
+
+    @GetMapping(path = {"/sign-up"})
+    public String signUp() {
+        return "sign-up";
+    }
+
+    @GetMapping(path = {"/friends"})
+    public String friends() {
+        return "friends";
     }
 }

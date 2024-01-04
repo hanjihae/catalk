@@ -4,7 +4,7 @@
 <html>
     <head>
         <title>Welcome to CATALK</title>
-        <link rel="stylesheet" type="text/css" href="/css/login.css" />
+        <link rel="stylesheet" type="text/css" href="/css/styles.css" />
     </head>
     <body>
         <div class="status-bar">

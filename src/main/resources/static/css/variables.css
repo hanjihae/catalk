@@ -1,3 +1,4 @@
 :root {
-    --yellow: #fae100;
+    --yellow: rgb(255,209,0);
+    --horizontal-space: 20px;
 }
