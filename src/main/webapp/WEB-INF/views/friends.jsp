@@ -22,6 +22,7 @@
                 <i class="fas fa-bolt"></i>
             </div>
         </div>
+
         <header class="screen-header">
             <h1 class="screen-header__title">Friends</h1>
             <div class="screen-header__icons">
@@ -30,11 +31,13 @@
                 <span><i class="fas fa-cog fa-lg"></i></span>
             </div>
         </header>
+
         <a id="friends-display-link">
             <i class="fas fa-info-circle"></i>
             Information For CATALK
             <i class="fas fa-chevron-right fa-xs"></i>
         </a>
+
         <main class="friends-screen">
             <div class="user-component">
                 <div class="user-component__column">
@@ -60,7 +63,11 @@
                             <h6 class="user-component__subtitle">catalk account2</h6>
                         </div>
                     </div>
-                    <div class="user-component__column"></div>
+                    <div class="user-component__column">
+                        <div>
+                            <span>음악표시인데 이거 꼭 있어야하나?</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -70,8 +77,8 @@
                 <li class="nav__btn"><a class="nav__link" href="#"><i class="fas fa-user fa-2x"></i></a></li>
                 <li class="nav__btn">
                     <a class="nav__link" href="#">
-                        <!-- new message -->
-                        <span class="nav__notification">1</span>
+                        <!-- new message 세자리수 되면 동그라미 넘침 해결필요함 -->
+                        <span class="nav__notification badge">23</span>
                         <i class="far fa-comment fa-2x"></i>
                     </a>
                 </li>

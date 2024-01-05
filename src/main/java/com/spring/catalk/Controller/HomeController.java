@@ -19,4 +19,14 @@ public class HomeController {
     public String friends() {
         return "friends";
     }
+
+    @GetMapping(path = {"/chats"})
+    public String chats() {
+        return "chats";
+    }
+
+    @GetMapping(path = {"/my-profile"})
+    public String profile() {
+        return "my-profile";
+    }
 }
