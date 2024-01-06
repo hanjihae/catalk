@@ -28,13 +28,14 @@
             <h1 class="welcome-header__title">Welcome to CATALK</h1>
             <p class="welcome-header__text">If you don't have a CATALK account, fill in the blanks.</p>
         </header>
-        <form id="signup-form">
-            <input type="text" placeholder="Name" />
-            <input type="text" placeholder="Email or phone number" />
-            <input type="password" placeholder="Password" />
-            <input type="text" id="datepicker" placeholder="YYYY-MM-DD"
-                   required pattern="(?:19|20)\[0-9\]{2}-(?:(?:0\[1-9\]|1\[0-2\])-(?:0\[1-9\]|1\[0-9\]|2\[0-9\])|(?:(?!02)(?:0\[1-9\]|1\[0-2\])-(?:30))|(?:(?:0\[13578\]|1\[02\])-31))" />
-            <input type="submit" value="Sign Up" />
+        <form id="signup-form" method="post">
+            <input type="text" placeholder="Name" name="userName" />
+            <input type="text" placeholder="Id" name="userId" />
+            <input type="password" placeholder="Password" name="userPw" />
+            <input type="text" placeholder="Phone number" name="userPhone" />
+            <input type="date" id="datepicker" placeholder="YYYY-MM-DD" name="userDate"
+                   required pattern="(?:19|20)\d{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])|(?!02)(?:0[1-9]|1[0-2])-(?:30)|(?:0[13578]|1[02])-31)" />
+            <input type="submit" value="Sign Up" formaction="/user/doSignUp" />
         </form>
         <script src="https://kit.fontawesome.com/3aeedf8ddf.js" crossorigin="anonymous"></script>
         <script>
