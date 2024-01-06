@@ -8,7 +8,6 @@
 @import "component/screen-header.css";
 @import "component/user-component.css";
 @import "component/badge.css";
-@import "component/profile-bar.css";
 
 /* Screen */
 @import "screen/login.css";
