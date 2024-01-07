@@ -32,10 +32,17 @@
             <p class="welcome-header__text">캣톡 계정으로 로그인하라옹</p>
         </header>
         <form id="login-form" method="post">
-            <input type="text" placeholder="아이디" name="userId" />
-            <input type="password" placeholder="비밀번호" name="userPw" />
-            <input type="submit" value="로그인" formaction="/user/doLogin"  />
-            <input type="submit"  value="회원가입" formaction="/user/showSignUp" />
+            <div class="login-form__list">
+                <input type="text" placeholder="아이디" name="userId" />
+                <button type="button" onclick="checkDuplicate()">중복체크</button>
+            </div>
+            <div class="login-form__list">
+                <input type="password" placeholder="비밀번호" name="userPw" />
+            </div>
+            <div class="login-form__list">
+                <input type="submit" value="로그인" formaction="/user/doLogin"  />
+                <input type="submit"  value="회원가입" formaction="/user/showSignUp" />
+            </div>
             <a href="#">아이디/비밀번호 찾기</a>
         </form>
         <script src="https://kit.fontawesome.com/3aeedf8ddf.js" crossorigin="anonymous"></script>
