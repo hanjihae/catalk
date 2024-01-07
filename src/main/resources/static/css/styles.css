@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 @import "reset.css";
 @import "variables.css";
+@import "font.css";
 
 /* Component */
 @import "component/status-bar.css";
@@ -16,10 +16,23 @@
 @import "screen/user-profile.css";
 
 body {
-    font-family: "Jua", sans-serif;
+    font-family: 'NanumBarunGothic', 'KIMM_Bold', sans-serif;
     color: black;
 }
 
-.main-screen {
-    padding: 0px var(--horizontal-space);
+/* phone */
+@media all and (max-width: 767px ) {
+
+    body {
+        min-width: 479px;
+    }
+
+    .main-screen {
+        padding: 0px var(--horizontal-space);
+    }
+}
+
+/* pc */
+@media all and (min-width:768px) {
+
 }

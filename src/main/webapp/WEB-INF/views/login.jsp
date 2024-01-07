@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Welcome to CATALK</title>
+        <title>로그인 - Welcome to CATALK</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="/css/styles.css" />
         <script>
 
         </script>
     </head>
-    <body>
+    <body class="height-100vh">
         <div class="status-bar">
             <div class="status-bar__column">
                 <span>No Service</span>
@@ -28,8 +28,8 @@
         </div>
         <header class="welcome-header">
             <img src="/img/logo.png" class="welcome-header__logo" />
-            <h1 class="welcome-header__title">환영합니다</h1>
-            <p class="welcome-header__text">캣톡 계정으로 로그인해주세요!</p>
+            <h1 class="welcome-header__title">Welcome to CATALK</h1>
+            <p class="welcome-header__text">캣톡 계정으로 로그인하라옹</p>
         </header>
         <form id="login-form" method="post">
             <input type="text" placeholder="아이디" name="userId" />

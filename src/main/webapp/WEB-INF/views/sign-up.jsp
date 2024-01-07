@@ -3,12 +3,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Welcome to CATALK</title>
+        <title>회원가입 - Welcome to CATALK</title>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <link rel="stylesheet" type="text/css" href="/css/styles.css" />
     </head>
-    <body>
+    <body class="height-100vh">
         <div class="status-bar">
             <div class="status-bar__column">
                 <span>No Service</span>
@@ -24,9 +24,10 @@
                 <i class="fas fa-bolt"></i>
             </div>
         </div>
-        <header class="welcome-header">
-            <h1 class="welcome-header__title">환영합니다</h1>
-            <p class="welcome-header__text">캣톡 계정이 없으시다면 아래 빈칸을 채워 회원가입해주세요!</p>
+        <header class="welcome-header welcome-header__signup">
+            <img src="/img/logo.png" class="welcome-header__logo" />
+            <h1 class="welcome-header__title">Welcome to CATALK</h1>
+            <p class="welcome-header__text welcome-header__text-signup">캣톡 계정이 없다면 빈칸을 채워 회원가입하라옹</p>
         </header>
         <form id="signup-form" method="post">
             <input type="text" placeholder="아이디" name="userId" id="userId" oninput="userValidation(this);" />
@@ -45,6 +46,27 @@
         </form>
         <script src="https://kit.fontawesome.com/3aeedf8ddf.js" crossorigin="anonymous"></script>
         <script>
+            function changeTextOnWidth() {
+                var welcomeText = document.querySelector('.welcome-header__text-signup');
+
+                // 가로 크기가 556px 이하일 때
+                if (window.innerWidth <= 556) {
+                    welcomeText.innerHTML = "캣톡 계정이 없다면<br>빈칸을 채워 회원가입하라옹"; // HTML 태그를 사용한 내용으로 변경
+                } else {
+                    welcomeText.textContent = "캣톡 계정이 없다면 빈칸을 채워 회원가입하라옹"; // 가로 크기가 556px 초과일 때의 내용
+                }
+            }
+
+            // 화면 크기 변화 감지 시 내용 변경
+            window.addEventListener('resize', function () {
+                changeTextOnWidth();
+            });
+
+            // 페이지 로드 시 초기 내용 설정
+            window.addEventListener('load', function () {
+                changeTextOnWidth();
+            });
+
             $.datepicker.setDefaults({
                 dateFormat: 'yy-mm-dd',
                 prevText: '이전 달',
