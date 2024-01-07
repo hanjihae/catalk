@@ -28,20 +28,20 @@
             <h1 class="welcome-header__title">환영합니다</h1>
             <p class="welcome-header__text">캣톡 계정이 없으시다면 아래 빈칸을 채워 회원가입해주세요!</p>
         </header>
-        <form id="signup-form" method="post">
+        <form id="signup-form" method="post" onSubmit="return signUp();">
             <input type="text" placeholder="아이디" name="userId" id="userId" oninput="userValidation(this);" />
             <span id="userIdMsg"></span>
             <input type="password" placeholder="비밀번호" name="userPw" id="userPw" oninput="userValidation(this);" />
             <span id="userPwMsg"></span>
             <input type="password" placeholder="비밀번호 확인" id="userPw2" oninput="passConfirm();" />
-            <span id="userPw2Msg"></span>
+            <span id="userPw2Msg2"></span>
             <input type="text" placeholder="이름" name="userName" id="userName" oninput="userValidation(this);" />
             <span id="userNameMsg"></span>
             <input type="text" id="datepicker" placeholder="생년월일" name="userDate"
                    required pattern="(?:19|20)\d{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])|(?!02)(?:0[1-9]|1[0-2])-(?:30)|(?:0[13578]|1[02])-31)" />
             <input type="text" placeholder="핸드폰 번호" name="userPhone" id="userPhone" />
             <span id="userPhoneMsg"></span>
-            <input type="submit" value="회원가입" formaction="/user/doSignUp" onClick="signUp();" />
+            <input type="submit" value="회원가입" formaction="/user/doSignUp"  />
         </form>
         <script src="https://kit.fontawesome.com/3aeedf8ddf.js" crossorigin="anonymous"></script>
         <script>
@@ -62,51 +62,43 @@
                 $( "#datepicker").datepicker();
             });
 
-            function userValidation(e) {
-                if(e.value == '') {
+
+            function userValidation(e) { //id, 비번, 이름 글자수 체크
                 var thisId = e.id;
+                if( $('#'+thisId).val().length<3 || $('#'+thisId).val().length>20 ){
                     $('#'+thisId).attr('style','background-color:pink');
-                    console.log(thisId);
-                    if(thisId=='userName'){
-                        $('#'+thisId+"Msg").html('<b style="font-size: 10px; color: red">[3~10글자로 입력하세요.]</b>');
-                    }else{
-                        $('#'+thisId+"Msg").html('<b style="font-size: 10px; color: red">[영문자, 숫자조합 3~20글자로 입력하세요.]</b>');
-                    }
-                    chk1 = false;
+                    $('#'+thisId+"Msg").html('<b style="font-size: 10px; color: red">[3~20글자로 입력하세요.]</b>');
+                }else{
+                    $('#'+thisId).attr('style','background-color:white');
+                    $('#'+thisId+"Msg").html('');
                 }
             }
-            /* 입력없이 가입버튼 클릭시 */
-            function signUp(){
-                if($("#userId").val()==""){
-                    alert("아이디를 입력해주세요.");
-                    $("#userId").focus();
+
+            function passConfirm(e) { // 비번 일치 확인
+                var userPw = $('#userPw').val();
+                var userPw2 = $('#userPw2').val();
+                if(userPw == userPw2){
+                    $('#userPw2').attr('style','background-color:white');
+                    $('#userPw2Msg2').html('<b style="font-size: 10px; color: green">비밀번호가 일치합니다.</b>');
+                }else{
+                    $('#userPw2').attr('style','background-color:pink');
+                    $('#userPw2Msg2').html('<b style="font-size: 10px; color: red">비밀번호가 일치하지 않습니다.</b>');
+                }
+            }
+
+            function signUp(){ // 데이터 입력 확인
+                var inputs = $('input');
+                for(var i = 0; i <inputs.length; i++){
+                    if(inputs[i].style.cssText=="background-color: pink;"){
+                        alert("입력한 정보를 다시 확인해주세요.");
+                        return false;
+                    }
+                }
+                if($("#userId").val()==""||$("#userPw").val()==""||$("#userPw2").val()==""||$("#userName").val()==""||$("#userDate").val()==""||$("#userPhone").val()==""){
+                    alert("입력한 정보를 다시 확인해주세요.");
                     return false;
                 }
-                if($("#userPw").val()==""){
-                    alert("비밀번호를 입력해주세요.");
-                    $("#userPw").focus();
-                    return false;
-                }
-                if($("#userPw2").val()==""){
-                    alert("비밀번호 확인을 입력해주세요.");
-                    $("#userPw2").focus();
-                    return false;
-                }
-                if($("#userName").val()==""){
-                    alert("성명을 입력해주세요.");
-                    $("#userName").focus();
-                    return false;
-                }
-                if($("#userDate").val()==""){
-                    alert("생년월일을 입력해주세요.");
-                    $("#userDate").focus();
-                    return false;
-                }
-                if($("#userPhone").val()==""){
-                    alert("연락처를 입력해주세요.");
-                    $("#userPhone").focus();
-                    return false;
-                }
+                return true;
             }
 
             function memberIdOverlap(){
@@ -131,21 +123,8 @@
                 });
             }
 
-            function passConfirm(e) {
-                var password = document.getElementById('passwd');
-                var passwordConfirm = document.getElementById('confirm');
-                var confrimMsg = document.getElementById('confirmMsg');
-                var correctColor = "#00ff00";	//맞았을 때 출력되는 색깔.
-                var wrongColor ="#ff0000";	//틀렸을 때 출력되는 색깔
 
-                if(password.value == passwordConfirm.value){//password 변수의 값과 passwordConfirm 변수의 값과 동일하다.
-                    confirmMsg.style.color = correctColor;/* span 태그의 ID(confirmMsg) 사용  */
-                    confirmMsg.innerHTML ="비밀번호 일치";/* innerHTML : HTML 내부에 추가적인 내용을 넣을 때 사용하는 것. */
-                }else{
-                    confirmMsg.style.color = wrongColor;
-                    confirmMsg.innerHTML ="비밀번호 불일치";
-                }
-            }
+
         </script>
     </body>
 </html>
