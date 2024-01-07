@@ -21,7 +21,7 @@ public class UserDto {
     private String userPw;
 
     @NotBlank(message="이름을 입력하세요.")
-    @Pattern(regexp=".{3,10}")
+    @Pattern(regexp=".{3,20}")
     private String userName;
 
     @NotBlank(message="생년월일을 입력하세요.")
