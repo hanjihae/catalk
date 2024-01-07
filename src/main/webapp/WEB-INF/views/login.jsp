@@ -4,6 +4,7 @@
 <html>
     <head>
         <title>Welcome to CATALK</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="/css/styles.css" />
         <script>
 
@@ -26,15 +27,16 @@
             </div>
         </div>
         <header class="welcome-header">
-            <h1 class="welcome-header__title">Welcome to CATALK</h1>
-            <p class="welcome-header__text">If you have a CATALK account, log in with your email or phone number.</p>
+            <img src="/img/logo.png" class="welcome-header__logo" />
+            <h1 class="welcome-header__title">환영합니다</h1>
+            <p class="welcome-header__text">캣톡 계정으로 로그인해주세요!</p>
         </header>
         <form id="login-form" method="post">
-            <input type="text" placeholder="Email or phone number" name="userId" />
-            <input type="password" placeholder="Password" name="userPw" />
-            <input type="submit" value="Log In" formaction="/user/doLogin"  />
-            <input type="submit"  value="Sign Up" formaction="/user/showSignUp" />
-            <a href="#">Find CATALK account or Password</a>
+            <input type="text" placeholder="아이디" name="userId" />
+            <input type="password" placeholder="비밀번호" name="userPw" />
+            <input type="submit" value="로그인" formaction="/user/doLogin"  />
+            <input type="submit"  value="회원가입" formaction="/user/showSignUp" />
+            <a href="#">아이디/비밀번호 찾기</a>
         </form>
         <script src="https://kit.fontawesome.com/3aeedf8ddf.js" crossorigin="anonymous"></script>
     </body>

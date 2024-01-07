@@ -25,23 +25,23 @@
             </div>
         </div>
         <header class="welcome-header">
-            <h1 class="welcome-header__title">Welcome to CATALK</h1>
-            <p class="welcome-header__text">If you don't have a CATALK account, fill in the blanks.</p>
+            <h1 class="welcome-header__title">환영합니다</h1>
+            <p class="welcome-header__text">캣톡 계정이 없으시다면 아래 빈칸을 채워 회원가입해주세요!</p>
         </header>
         <form id="signup-form" method="post">
-            <input type="text" placeholder="Name" name="userName" id="userName" oninput="userValidation(this);" />
-            <span id="userNameMsg"></span>
-            <input type="text" placeholder="Id" name="userId" id="userId" oninput="userValidation(this);" />
+            <input type="text" placeholder="아이디" name="userId" id="userId" oninput="userValidation(this);" />
             <span id="userIdMsg"></span>
-            <input type="password" placeholder="Password" name="userPw" id="userPw" oninput="userValidation(this);" />
+            <input type="password" placeholder="비밀번호" name="userPw" id="userPw" oninput="userValidation(this);" />
             <span id="userPwMsg"></span>
-            <input type="password" placeholder="Password Check" id="userPw2" oninput="passConfirm();" />
+            <input type="password" placeholder="비밀번호 확인" id="userPw2" oninput="passConfirm();" />
             <span id="userPw2Msg"></span>
-            <input type="text" placeholder="Phone number" name="userPhone" id="userPhone" />
-            <span id="userPhoneMsg"></span>
-            <input type="date" id="datepicker" placeholder="YYYY-MM-DD" name="userDate"
+            <input type="text" placeholder="이름" name="userName" id="userName" oninput="userValidation(this);" />
+            <span id="userNameMsg"></span>
+            <input type="text" id="datepicker" placeholder="생년월일" name="userDate"
                    required pattern="(?:19|20)\d{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])|(?!02)(?:0[1-9]|1[0-2])-(?:30)|(?:0[13578]|1[02])-31)" />
-            <input type="submit" value="Sign Up" formaction="/user/doSignUp" onClick="signUp();" />
+            <input type="text" placeholder="핸드폰 번호" name="userPhone" id="userPhone" />
+            <span id="userPhoneMsg"></span>
+            <input type="submit" value="회원가입" formaction="/user/doSignUp" onClick="signUp();" />
         </form>
         <script src="https://kit.fontawesome.com/3aeedf8ddf.js" crossorigin="anonymous"></script>
         <script>
