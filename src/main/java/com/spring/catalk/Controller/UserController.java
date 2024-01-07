@@ -3,17 +3,16 @@ package com.spring.catalk.Controller;
 import com.spring.catalk.Dto.UserDto;
 import com.spring.catalk.Service.UserService;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 @Controller @RequestMapping("/user")
@@ -23,28 +22,39 @@ public class UserController {
     @Qualifier("userService")
     private UserService userService;
 
-    @PostMapping("/showSignUp")
+    @RequestMapping("/showSignUp") //로그인창에서 가입하기 누르면 가입창 보여줌
     public String showSignUp(){
-
         return "sign-up";
     }
 
-    @PostMapping("/doSignUp")
-    public String doSignUp(UserDto user, HttpSession session, Model model) throws ParseException {
-
+    @RequestMapping("/doSignUp") //가입창에서 가입하기 누르면 유저 정보 저장
+    public String doSignUp(@Valid UserDto user, BindingResult br, HttpSession session, Model model) {
+        if (br.hasErrors()) {
+            model.addAttribute("signUpFail", "signUpFail");
+            return "redirect:/user/showSignUp";
+        }
         userService.saveUser(user);
-
         if (user != null) {
             session.setAttribute("loginUser", user);
-
+            return "friends";
         } else {
             model.addAttribute("signUpFail", "signUpFail");
             return "home";
         }
+    }
 
-        //model.addAttribute(newUser);
+    @RequestMapping("/doLogin")//로그인처리
+    public String doLogin(String userId, String userPw, HttpSession session, Model model) {
 
-        return "friends";
+        UserDto user = userService.findUserByIdAndPasswd(userId, userPw);
+
+        if (user != null) {
+            session.setAttribute("loginUser", user);
+            return "redirect:/friends";
+        } else {
+            model.addAttribute("loginfail", user);
+            return "redirect:/home";
+        }
     }
 
 

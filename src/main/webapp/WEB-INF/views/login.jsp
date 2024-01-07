@@ -30,9 +30,9 @@
             <p class="welcome-header__text">If you have a CATALK account, log in with your email or phone number.</p>
         </header>
         <form id="login-form" method="post">
-            <input type="text" placeholder="Email or phone number" />
-            <input type="password" placeholder="Password" />
-            <input type="submit" value="Log In" formaction="/user/logIn"  />
+            <input type="text" placeholder="Email or phone number" name="userId" />
+            <input type="password" placeholder="Password" name="userPw" />
+            <input type="submit" value="Log In" formaction="/user/doLogin"  />
             <input type="submit"  value="Sign Up" formaction="/user/showSignUp" />
             <a href="#">Find CATALK account or Password</a>
         </form>
