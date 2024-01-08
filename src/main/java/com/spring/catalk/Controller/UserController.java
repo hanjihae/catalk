@@ -2,6 +2,7 @@ package com.spring.catalk.Controller;
 
 import com.spring.catalk.Dto.UserDto;
 import com.spring.catalk.Service.UserService;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +10,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.text.ParseException;
 
 
@@ -57,6 +58,10 @@ public class UserController {
         }
     }
 
+    @RequestMapping(value = {"/userIdCheck"}, method = RequestMethod.POST)
+    public void userIdCheck(HttpServletResponse response, @RequestParam("userId") String UserId) throws IOException {
+        userService.userIdCheck(UserId, response);
+    }
 
 
 }

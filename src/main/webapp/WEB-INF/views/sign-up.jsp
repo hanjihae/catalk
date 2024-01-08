@@ -7,6 +7,7 @@
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+
     </head>
     <body class="height-100vh">
         <div class="status-bar">
@@ -32,7 +33,7 @@
         <form id="signup-form" method="post" onSubmit="return signUp();">
             <div class="signup-form__id">
                 <input type="text" placeholder="아이디" name="userId" id="userId" oninput="userValidation(this);" />
-                <button>중복체크</button>
+                <button id="idDuplication_btn" onClick="userIdCheck();">중복체크</button>
             </div>
             <span id="userIdMsg"></span>
             <input type="password" placeholder="비밀번호" name="userPw" id="userPw" oninput="userValidation(this);" />
@@ -80,7 +81,10 @@
                 dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
                 dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
                 showMonthAfterYear: true,
-                yearSuffix: '년'
+                yearSuffix: '년',
+                changeYear: true,
+                maxDate:new Date(),
+                yearRange: "-80:+00"
             });
 
             $(function() {
@@ -93,14 +97,23 @@
                 });
             });
 
+            var IdChecked = false; // 아이디 중복체크 확인용
             function userValidation(e) { //id, 비번, 이름 글자수 체크
                 var thisId = e.id;
                 if( $('#'+thisId).val().length<3 || $('#'+thisId).val().length>20 ){
-                    $('#'+thisId).attr('style','background-color:rgba(0, 0, 0, 0.1)');
+                    $('#'+thisId).css({'background-color':'rgba(0, 0, 0, 0.1)','margin-bottom':'10px'});
                     $('#'+thisId+"Msg").html('<b style="font-size: 10px; color: rgba(0, 0, 0, 0.3)">[3~20글자로 입력하세요.]</b>');
+                    if(thisId=='userId'){
+                        $('#idDuplication_btn').attr('style','display:none');
+                        IdChecked = false;
+                    }
                 }else{
-                    $('#'+thisId).attr('style','background-color:white');
+                    $('#'+thisId).css({'background-color':'white','margin-bottom':'25px'});
                     $('#'+thisId+"Msg").html('');
+                    if(thisId=='userId'){
+                        $('#idDuplication_btn').attr('style','display:block');
+                        IdChecked = false;
+                    }
                 }
             }
 
@@ -116,7 +129,7 @@
                 }
             }
 
-            function signUp(){ // 데이터 입력 확인
+            function signUp(){ // 가입 클릭시 데이터 입력 확인
                 var inputs = $('input');
                 for(var i = 0; i <inputs.length; i++){
                     if(inputs[i].style.cssText=="background-color: rgba(0, 0, 0, 0.1);"){
@@ -128,23 +141,31 @@
                     alert("입력한 정보를 다시 확인해주세요.");
                     return false;
                 }
+                if(IdChecked==false){
+                    alert("아이디 중복 체크를 해주세요.");
+                }
                 return true;
             }
 
-            function memberIdOverlap(){
-                const formData = $('#registerform').serialize();
+            function userIdCheck(){
+                var userId = $('#userId').val();
+                if(userId==""){
+                    alert('아이디를 입력하세요.');
+                    return false;
+                }
                 $.ajax({
                     method :"post",
-                    url :"memberIdOverlap",
-                    data : formData,
+                    url :"/user/userIdCheck",
+                    data : { userId : userId },
                     success : function(data,status,xhr){
                         if(data == "1"){
-                             $('#memberId').css('background-color', 'rgba(0, 0, 0, 0.1)');
-                             $('#memberIdMsg').html('<b style="font-size: 10px; color: var(--yellow)">[사용가능한 아이디 입니다.]</b>');
-                             chk1 = true;
-                            alert("이 아이디는 사용 가능합니다.");
-                        }else{	//
-                            alert("이 아이디는 사용 불가능합니다.");
+                            $('#userIdMsg').html('<b style="font-size: 10px; color: rgba(0, 0, 0, 0.3)">[사용 가능한 아이디입니다.]</b>');
+                            $('#userId').css({'margin-bottom':'10px'});
+                            IdChecked = true;
+                        }else{
+                            $('#userIdMsg').html('<b style="font-size: 10px; color: red">[이미 사용 중인 아이디입니다.]</b>');
+                            $('#userId').css({'margin-bottom':'10px'});
+                            IdChecked = false;
                         }
                     },
                     error : function(data,status,xhr){

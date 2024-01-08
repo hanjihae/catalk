@@ -13,4 +13,7 @@ public interface UserMapper {
 
     @Select("SELECT * FROM USER WHERE userId = #{userId} and userPw = #{userPw}")
     UserDto selectUserByIdAndPasswd(String userId, String userPw);
+
+    @Select("SELECT COUNT(*) FROM USER WHERE userId = #{userId} and userActive = 1")
+    int selectUserIdCount(String userId);
 }
