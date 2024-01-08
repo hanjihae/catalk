@@ -1,3 +1,13 @@
+/* phone */
+@media all and (max-width: 767px ) {
+
+}
+
+/* pc */
+@media all and (min-width:768px) {
+
+}
+
 .user-component {
     justify-content: space-between;
     padding: 10px 0px;

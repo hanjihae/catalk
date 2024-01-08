@@ -30,7 +30,10 @@
             <p class="welcome-header__text welcome-header__text-signup">캣톡 계정이 없다면 빈칸을 채워 회원가입하라옹</p>
         </header>
         <form id="signup-form" method="post" onSubmit="return signUp();">
-            <input type="text" placeholder="아이디" name="userId" id="userId" oninput="userValidation(this);" />
+            <div class="signup-form__id">
+                <input type="text" placeholder="아이디" name="userId" id="userId" oninput="userValidation(this);" />
+                <button>중복체크</button>
+            </div>
             <span id="userIdMsg"></span>
             <input type="password" placeholder="비밀번호" name="userPw" id="userPw" oninput="userValidation(this);" />
             <span id="userPwMsg"></span>
@@ -84,12 +87,17 @@
                 $( "#datepicker").datepicker();
             });
 
+            $(function() {
+                $('.signup-form__id button').on('click', function(e) {
+                    e.preventDefault();
+                });
+            });
 
             function userValidation(e) { //id, 비번, 이름 글자수 체크
                 var thisId = e.id;
                 if( $('#'+thisId).val().length<3 || $('#'+thisId).val().length>20 ){
-                    $('#'+thisId).attr('style','background-color:pink');
-                    $('#'+thisId+"Msg").html('<b style="font-size: 10px; color: red">[3~20글자로 입력하세요.]</b>');
+                    $('#'+thisId).attr('style','background-color:rgba(0, 0, 0, 0.1)');
+                    $('#'+thisId+"Msg").html('<b style="font-size: 10px; color: rgba(0, 0, 0, 0.3)">[3~20글자로 입력하세요.]</b>');
                 }else{
                     $('#'+thisId).attr('style','background-color:white');
                     $('#'+thisId+"Msg").html('');
@@ -103,7 +111,7 @@
                     $('#userPw2').attr('style','background-color:white');
                     $('#userPw2Msg2').html('<b style="font-size: 10px; color: green">비밀번호가 일치합니다.</b>');
                 }else{
-                    $('#userPw2').attr('style','background-color:pink');
+                    $('#userPw2').attr('style','background-color:rgba(0, 0, 0, 0.1)');
                     $('#userPw2Msg2').html('<b style="font-size: 10px; color: red">비밀번호가 일치하지 않습니다.</b>');
                 }
             }
@@ -111,7 +119,7 @@
             function signUp(){ // 데이터 입력 확인
                 var inputs = $('input');
                 for(var i = 0; i <inputs.length; i++){
-                    if(inputs[i].style.cssText=="background-color: pink;"){
+                    if(inputs[i].style.cssText=="background-color: rgba(0, 0, 0, 0.1);"){
                         alert("입력한 정보를 다시 확인해주세요.");
                         return false;
                     }
@@ -131,8 +139,8 @@
                     data : formData,
                     success : function(data,status,xhr){
                         if(data == "1"){
-                             $('#memberId').css('background-color', '#c2d9a4');
-                             $('#memberIdMsg').html('<b style="font-size: 10px; color: #000">[사용가능한 아이디 입니다.]</b>');
+                             $('#memberId').css('background-color', 'rgba(0, 0, 0, 0.1)');
+                             $('#memberIdMsg').html('<b style="font-size: 10px; color: var(--yellow)">[사용가능한 아이디 입니다.]</b>');
                              chk1 = true;
                             alert("이 아이디는 사용 가능합니다.");
                         }else{	//

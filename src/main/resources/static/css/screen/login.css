@@ -17,7 +17,7 @@
 
 #login-form input {
     border: none;
-    padding: 31px 80px;
+    padding: 31px 0;
     font-size: 1.2em;
     margin-bottom: 20px;
 }
@@ -65,20 +65,11 @@
     }
 
     #login-form {
+        display: flex;
+        flex-direction: column;
         margin: 65px 45px 0;
     }
 
-    .login-form__list {
-        position: relative;
-        margin-bottom: 5px;
-    }
-
-    .login-form__list button {
-        position: absolute;
-        top: 50%;
-        right: 5px; /* 버튼을 오른쪽에 위치하도록 설정, 필요에 따라 조절 가능 */
-        transform: translateY(-50%);
-    }
 }
 
 /* pc */
