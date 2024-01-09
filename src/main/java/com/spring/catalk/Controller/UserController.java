@@ -5,6 +5,7 @@ import com.spring.catalk.Service.UserService;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,7 @@ import java.io.IOException;
 import java.text.ParseException;
 
 
-@Controller @RequestMapping("/user")
+@Controller @RequestMapping("/user") @Slf4j
 public class UserController {
 
     @Autowired
@@ -46,9 +47,7 @@ public class UserController {
 
     @RequestMapping("/doLogin")//로그인처리
     public String doLogin(String userId, String userPw, HttpSession session, Model model) {
-
         UserDto user = userService.findUserByIdAndPasswd(userId, userPw);
-
         if (user != null) {
             session.setAttribute("loginUser", user);
             return "redirect:/friends";
