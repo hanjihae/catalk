@@ -7,7 +7,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="/css/styles.css" />
         <script>
-
+            function findIdAndPasswd(){
+                var popup = window.open('/user/findPopup', '아이디/비밀번호 찾기', 'width=700px,height=800px,scrollbars=no,resizable=no');
+            }
         </script>
     </head>
     <body class="height-100vh">
@@ -36,7 +38,7 @@
             <input type="password" placeholder="비밀번호" name="userPw" />
             <input type="submit" value="로그인" formaction="/user/doLogin"  />
             <input type="submit"  value="회원가입" formaction="/user/showSignUp" />
-            <a href="#">아이디/비밀번호 찾기</a>
+            <a href="#" onClick="findIdAndPasswd();" >아이디/비밀번호 찾기</a>
         </form>
         <script src="https://kit.fontawesome.com/3aeedf8ddf.js" crossorigin="anonymous"></script>
     </body>

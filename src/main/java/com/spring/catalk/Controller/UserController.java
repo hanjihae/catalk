@@ -1,11 +1,15 @@
 package com.spring.catalk.Controller;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.spring.catalk.Dto.UserDto;
 import com.spring.catalk.Service.UserService;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
-import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -14,10 +18,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.text.ParseException;
 
 
-@Controller @RequestMapping("/user") @Slf4j
+@Controller @RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -60,6 +63,26 @@ public class UserController {
     @RequestMapping(value = {"/userIdCheck"}, method = RequestMethod.POST)
     public void userIdCheck(HttpServletResponse response, @RequestParam("userId") String UserId) throws IOException {
         userService.userIdCheck(UserId, response);
+    }
+
+    @RequestMapping("/findPopup")
+    public String showFindPopup(){
+        return "findIdPopup";
+    }
+
+    @RequestMapping(value ="/findUser", method = RequestMethod.POST, produces = "application/json; charset=utf8") @ResponseBody
+    public String findUserData(@RequestBody String data) throws IOException{
+        JsonParser jsonParser = new JsonParser();
+
+        // JSON 문자열을 JsonElement로 파싱
+        JsonObject jsonObject = jsonParser.parse(data).getAsJsonObject();
+
+        // 특정 키의 값을 가져오기
+        String userData1 = jsonObject.get("userData1").getAsString();
+        String userData2 = jsonObject.get("userData2").getAsString();
+        boolean findIdOrNot = jsonObject.get("findIdOrNot").getAsBoolean();
+
+        return userService.findUserData(userData1, userData2, findIdOrNot);
     }
 
 

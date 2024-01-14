@@ -37,4 +37,14 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    public String findUserData( String userData1, String userData2, boolean findIdOrNot ){
+        String findData = "";
+        if(findIdOrNot){
+            findData = userMapper.selectUserId(userData1, userData2);
+        }else{
+            findData = userMapper.selectUserPasswd(userData1, userData2);
+        }
+        return findData;
+    }
+
 }
