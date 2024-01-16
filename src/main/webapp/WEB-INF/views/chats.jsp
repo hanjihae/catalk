@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Chats - CATALK</title>
+        <title>채팅 - CATALK</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
     </head>
     <body>
@@ -23,7 +24,13 @@
             </div>
         </div>
         <header class="screen-header">
-            <h1 class="screen-header__title">Chats</h1>
+            <div>
+                <div class="screen-header__catalk">
+                    <img src="/img/logo.png" class="screen-header__logo" />
+                    <h1 class="screen-header__catalk-title">CATALK</h1>
+                </div>
+                <h1 class="screen-header__title">채팅</h1>
+            </div>
             <div class="screen-header__icons">
                 <span><i class="fas fa-search fa-lg"></i></span>
                 <span><i class="fas fa-comments fa-lg"></i></span>
@@ -70,7 +77,7 @@
                         <i class="fas fa-comment fa-2x"></i>
                     </a>
                 </li>
-                <li class="nav__btn"><a class="nav__link" href="#"><i class="fas fa-paw fa-2x"></i></a></li>
+                <li class="nav__btn"><a class="nav__link" href="#"><img src="/img/haeil2.jpeg" /></i></a></li>
             </ul>
         </nav>
 

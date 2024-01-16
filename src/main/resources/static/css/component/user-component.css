@@ -1,11 +1,40 @@
 /* phone */
 @media all and (max-width: 767px ) {
+    .user-component__column {
+        white-space: nowrap;
+    }
 
+    .user-component__column-music {
+        padding: 1vh 20px;
+        border-radius: 24px;
+        font-size: 1em;
+        border: 1px solid var(--yellow);
+        display: block;
+        float: right;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 35vw;
+    }
+
+    .user-component__subtitle {
+        display: block;
+        float: right;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
 
 /* pc */
 @media all and (min-width:768px) {
-
+    .user-component__column-music {
+        margin-right: 70px;
+        padding: 9px 20px;
+        border-radius: 24px;
+        font-size: 1em;
+        border: 1px solid var(--yellow);
+    }
 }
 
 .user-component {

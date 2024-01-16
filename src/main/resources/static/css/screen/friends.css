@@ -1,14 +1,14 @@
 /* phone */
 @media all and (max-width: 767px ) {
     .friends-screen {
-        padding: 0px var(--horizontal-space);
+        padding: 0px var(--horizontal-space) 15vh;
     }
 }
 
 /* pc */
 @media all and (min-width:768px) {
     .friends-screen {
-        padding: 0px 3vw;
+        padding: 0 6vw 5vh 3vw ;
     }
 }
 

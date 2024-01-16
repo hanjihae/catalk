@@ -29,4 +29,9 @@ public class HomeController {
     public String profile() {
         return "my-profile";
     }
+
+    @GetMapping(path = {"/chat-room"})
+    public String chatRoom() {
+        return "chat-room";
+    }
 }

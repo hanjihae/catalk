@@ -42,17 +42,17 @@
 
     .screen-header__catalk-title {
         font-family: 'KIMM_Bold', sans-serif;
-        margin: 3px 0 0;
+        margin: 5px 0 0;
 
     }
     .screen-header__title {
-        font-size: 2.5em;
+        font-size: 2.4em;
         white-space: nowrap;
-        margin-left: 10px;
+        margin-left: 20px;
     }
 
     .screen-header__icons span {
-        margin-left: 25px;
+        margin-left: 30px;
     }
 
     .screen-header__logo {

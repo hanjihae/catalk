@@ -4,6 +4,7 @@
 <html>
     <head>
         <title>친구 - CATALK</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
     </head>
     <body>
@@ -51,7 +52,7 @@
             </div>
             <div class="friends-screen__friends">
                 <div class="friends-screen__friends-header">
-                    <span>친구 1</span>
+                    <span>친구 106</span>
                     <i class="fas fa-chevron-up fa-xs"></i>
                     <!-- chevron down icon <i class="fas fa-chevron-down fa-xs"></i> -->
                 </div>
@@ -65,7 +66,7 @@
                     </div>
                     <div class="user-component__column">
                         <div>
-                            <span>음악표시인데 이거 꼭 있어야하나?</span>
+                            <span class="user-component__column-music">(여자)아이들 - 퀸카(QueenCard)</span>
                         </div>
                     </div>
                 </div>

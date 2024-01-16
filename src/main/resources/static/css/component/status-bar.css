@@ -8,6 +8,11 @@
         top: 0;
         box-sizing: border-box;
         width: 100%;
+        background-color: white;
+    }
+
+    .status-bar__profile {
+        background-color: inherit;
     }
 
     .status-bar__column {
