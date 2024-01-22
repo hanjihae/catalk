@@ -29,4 +29,11 @@ public class HomeController {
     public String chatRoom() {
         return "chat-room";
     }
+
+    @GetMapping(path = {"/settings"})
+    public String settings() {
+        return "settings";
+    }
+
+
 }

@@ -8,6 +8,8 @@
 @import "component/screen-header.css";
 @import "component/user-component.css";
 @import "component/badge.css";
+@import "component/search.css";
+@import "component/alt-screen-header.css";
 
 /* Screen */
 @import "screen/login.css";
@@ -15,6 +17,7 @@
 @import "screen/friends.css";
 @import "screen/user-profile.css";
 @import "screen/chat-room.css";
+@import "screen/settings.css";
 
 body {
     font-family: 'NanumBarunGothic', 'KIMM_Bold', sans-serif;

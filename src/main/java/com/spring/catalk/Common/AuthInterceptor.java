@@ -18,23 +18,23 @@ public class AuthInterceptor implements HandlerInterceptor {
         HttpSession session = req.getSession();
         UserDto user = (UserDto) session.getAttribute("loginUser");
         //System.out.println(user);
-        if (user == null) {//로그인 전
-            if (uri.contains("/friends") || uri.contains("/chats") || uri.contains("/my-profile")) {// 로그인 안 하면 볼 수 없는 페이지
-                resp.sendRedirect("/home");
-                return false;
-            }
-        }else{
-            if (uri.contains("/showSignUp") || uri.contains("/home") ) {// 로그인 하면 볼 수 없는 페이지
-                resp.sendRedirect("/friends");
-                return false;
-            }
-        }
-        if (user != null && user.getUserType().equals("User") ) {
-            if (uri.contains("/admin")) {
-                resp.sendRedirect("/friends");
-                return false;
-            }
-        }
+//        if (user == null) {//로그인 전
+//            if (uri.contains("/friends") || uri.contains("/chats") || uri.contains("/my-profile")) {// 로그인 안 하면 볼 수 없는 페이지
+//                resp.sendRedirect("/home");
+//                return false;
+//            }
+//        }else{
+//            if (uri.contains("/showSignUp") || uri.contains("/home") ) {// 로그인 하면 볼 수 없는 페이지
+//                resp.sendRedirect("/friends");
+//                return false;
+//            }
+//        }
+//        if (user != null && user.getUserType().equals("User") ) {
+//            if (uri.contains("/admin")) {
+//                resp.sendRedirect("/friends");
+//                return false;
+//            }
+//        }
         return true;
 
     }

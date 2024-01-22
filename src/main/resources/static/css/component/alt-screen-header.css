@@ -1,0 +1,25 @@
+.alt-header__title {
+    font-size: 1.8em;
+}
+
+/* phone */
+@media all and (max-width: 767px ) {
+    .alt-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 3vh 4vw;
+    }
+}
+
+/* pc */
+@media all and (min-width:768px) {
+    .alt-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5vh 3vw;
+    }
+
+}
+

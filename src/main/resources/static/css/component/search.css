@@ -1,0 +1,24 @@
+.search-container {
+    display: none;
+    text-align: center;
+}
+
+#searchInput {
+    outline: none;
+    width: 90vw;
+    padding: 10px;
+}
+
+#searchInput:focus {
+    outline: var(--yellow);
+}
+
+#searchButton {
+    padding: 10px;
+    cursor: pointer;
+}
+
+#searchResults {
+    display: none;
+    margin-top: 20px;
+}

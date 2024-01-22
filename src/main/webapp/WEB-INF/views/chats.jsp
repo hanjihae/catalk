@@ -37,7 +37,6 @@
                 <span><i class="fas fa-cog fa-lg"></i></span>
             </div>
         </header>
-
         <main class="main-screen">
             <div class="user-component">
                 <div class="user-component__column">

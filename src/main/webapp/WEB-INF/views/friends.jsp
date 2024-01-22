@@ -33,12 +33,23 @@
                 <h1 class="screen-header__title">친구</h1>
             </div>
             <div class="screen-header__icons">
-                <span><i class="fas fa-search fa-lg"></i></span>
+                <span class="friend-search"><i class="fas fa-search fa-lg"></i></span>
                 <span><i class="fas fa-user-plus fa-lg"></i></span>
                 <span><i class="fas fa-cog fa-lg"></i></span>
             </div>
         </header>
-
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="이름으로 검색">
+        </div>
+        <div id="searchResults">
+            <div class="user-component__column">
+                <img src="/img/haeil2.jpeg" class="user-component__avatar"/>
+                <div class="user-component__text">
+                    <h4 class="user-component__title user-component__title--not-bold">Monkey</h4>
+                    <h6 class="user-component__subtitle">catalk account2</h6>
+                </div>
+            </div>
+        </div>
         <main class="friends-screen">
             <div class="user-component">
                 <div class="user-component__column">
@@ -88,5 +99,34 @@
         </nav>
 
         <script src="https://kit.fontawesome.com/3aeedf8ddf.js" crossorigin="anonymous"></script>
+        <script src="script.js"></script>
+        <script>
+            // 클래스명이 'friend-search'인 엘리먼트를 모두 선택
+            var friendSearchIcons = document.getElementsByClassName('friend-search');
+
+            // 각각의 아이콘에 대해 이벤트 리스너 추가
+            for (var i = 0; i < friendSearchIcons.length; i++) {
+                friendSearchIcons[i].addEventListener('click', function() {
+                    // friendSearchIcon 클릭 시 검색창을 토글하여 나타나거나 숨김
+                    var searchContainer = document.querySelector('.search-container');
+                    if (searchContainer.style.display === 'none') {
+                        searchContainer.style.display = 'block';
+                    } else {
+                        searchContainer.style.display = 'none';
+                    }
+                });
+            }
+
+            document.getElementById('searchButton').addEventListener('click', function() {
+                var searchTerm = document.getElementById('searchInput').value;
+                displaySearchResults(searchTerm);
+            });
+
+            function displaySearchResults(searchTerm) {
+                var searchResultsContainer = document.getElementById('searchResults');
+                var searchResultHTML = '<p>검색 결과: ' + searchTerm + '</p>';
+                searchResultsContainer.innerHTML = searchResultHTML;
+            }
+        </script>
     </body>
 </html>
