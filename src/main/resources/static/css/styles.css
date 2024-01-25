@@ -18,6 +18,7 @@
 @import "screen/user-profile.css";
 @import "screen/chat-room.css";
 @import "screen/settings.css";
+@import "screen/my-page.css";
 
 body {
     font-family: 'NanumBarunGothic', 'KIMM_Bold', sans-serif;

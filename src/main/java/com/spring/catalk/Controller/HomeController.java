@@ -35,5 +35,8 @@ public class HomeController {
         return "settings";
     }
 
-
+    @GetMapping(path = {"/my-page"})
+    public String myPage() {
+        return "my-page";
+    }
 }

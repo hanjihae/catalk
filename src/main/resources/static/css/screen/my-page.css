@@ -1,0 +1,52 @@
+/* phone */
+@media all and (max-width: 767px ) {
+
+}
+
+/* pc */
+@media all and (min-width:768px) {
+    .my-page__wallpaper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 45vh;
+        background: url("/img/haeil2.jpeg") no-repeat center fixed;
+        background-size: cover;
+        color: white;
+        padding: 0 40px;
+        position: relative;
+    }
+
+    .my-page__my-profile {
+        display: flex;
+        align-items: center;
+    }
+
+    .my-page__avatar {
+        width: 200px;
+        height: 200px;
+        border-radius: 50px;
+        object-fit: cover;
+    }
+
+    .my-page__text {
+        margin: 0 0 0 25px;
+    }
+
+    .my-page__title {
+        margin-bottom: 2.5vh;
+        font-size: 1.8em;
+    }
+
+    .my-page__subtitle {
+        font-size: 1.2em;
+    }
+
+    .my-page__wallpaper i {
+        position: absolute;
+        top: 15%;
+        right: 5vw;
+    }
+
+
+}
