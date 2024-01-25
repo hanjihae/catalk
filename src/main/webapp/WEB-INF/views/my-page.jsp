@@ -37,18 +37,24 @@
             </div>
         </header>
 
-        <div class="main-screen">
+        <div class="my-page-screen">
             <div class="my-page__category">
-                <ul>
-                    <li>일기</li>
-                    <li>지옥도거부할인간데스노트</li>
+                <ul class="my-page__category-ul">
+                    <h2 class="my-page__category__title">Category</h2>
+                    <li class="my-page__category__subtitle">일기</li>
+                    <ul class="my-page__category-sub">
+                        <li class="my-page__category-sub__title">적용 안되면 빼고 되면 넣고 서브카테고리일상일기냐</li>
+                        <li class="my-page__category-sub__title">개발일기</li>
+                    </ul>
+                    <li class="my-page__category__subtitle">지옥도거부할인간데스노트</li>
                 </ul>
             </div>
             <div class="my-page__board">
                 <div class="my-page__board-list">
                     <ul>
-                        <li>게시글1</li>
-                        <li>게시글2</li>
+                        <h2 class="my-page__board-list__title">게시글 목록</h2>
+                        <li class="my-page__board-list__subtitle">게시글1</li>
+                        <li class="my-page__board-list__subtitle">게시글2</li>
                         <!-- 페이징-->
                     </ul>
                 </div>

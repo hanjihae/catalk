@@ -48,5 +48,40 @@
         right: 5vw;
     }
 
+    .my-page-screen {
+        padding: 3vh 3vw 5vh 3vw;
+        display: flex;
+        justify-content: space-between;
+    }
 
+    .my-page__category {
+        order:2;
+        width: 15vw;
+        padding: 20px 30px;
+        border: 1px solid var(--yellow);
+        border-radius: 15px;
+    }
+
+    .my-page__category-ul {
+        list-style: disc;
+    }
+
+    .my-page__category__title {
+        font-family: 'KIMM_Bold', sans-serif;
+        margin-bottom: 15px;
+    }
+
+    .my_page__category__subtitle {
+        margin-bottom: 5px;
+    }
+
+    .my-page__category-sub {
+        padding-left: 10px;
+        list-style: circle;
+        margin: 5px 0;
+    }
+
+    .my-page__category-sub__title {
+        margin-bottom: 5px;
+    }
 }
