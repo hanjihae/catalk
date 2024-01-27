@@ -3,36 +3,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>아이디/비밀번호 찾기</title>
+        <title>아이디 찾기</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="/css/styles.css" />
         <script>
-            var findId = true;
-            function changeIdPasswd(){ // 아이디<>비밀번호 찾기 화면 바꾸기
-                if(findId==true){
-                    document.getElementsByClassName('welcome-header__title')[0].innerText = "Find Your Password";
-                    document.getElementById('find_btn').value="비밀번호 찾기";
-                    document.getElementById('change_btn').innerText="아이디 찾으러 가기";
-                    document.getElementById('findVal1').placeholder="아이디";
-                    document.getElementById('close_btn').style.display = "none";
-                    document.getElementById('find_btn').style.display = "block";
-                    document.getElementById('findVal2').style.display = "block";
-                    document.getElementById('findVal1').readOnly = false;
-                    document.getElementById('findVal1').value="";
-                    document.getElementById('findVal2').value="";
-                }else{
-                    document.getElementsByClassName('welcome-header__title')[0].innerText = "Find Your ID";
-                    document.getElementById('find_btn').value="아이디 찾기";
-                    document.getElementById('change_btn').innerText="비밀번호 찾으러 가기";
-                    document.getElementById('findVal1').placeholder="이름";
-                    document.getElementById('close_btn').style.display = "none";
-                    document.getElementById('find_btn').style.display = "block";
-                    document.getElementById('findVal2').style.display = "block";
-                    document.getElementById('findVal1').readOnly = false;
-                    document.getElementById('findVal1').value="";
-                    document.getElementById('findVal2').value="";
-                }
-                findId = !findId;
+            function changeIdPasswd(){
+                location.href="/user/findPwPopup";
             }
 
             function findUserData(){ // 비동기 데이터 찾기, 화면에 찾은 데이터 띄우기, 못찾으면 에러 메세지
@@ -55,7 +31,7 @@
                   body: JSON.stringify({
                     userData1 : userData1,
                     userData2 : userData2,
-                    findIdOrNot : findId
+                    userData3 : "id",
                   }),
                 }).then(response => {
                         if (!response.ok) {
@@ -80,6 +56,8 @@
                             document.getElementById('findVal2').style.display = "none";
                             document.getElementById('find_btn').style.display = "none";
                             document.getElementById('close_btn').style.display = "block";
+                            document.getElementById('change_btn').style.display = "none";
+
                         }
                       })
                     .catch(error => {
@@ -98,7 +76,7 @@
         <header class="welcome-header">
             <img src="/img/logo.png" class="welcome-header__logo" />
             <h1 class="welcome-header__title">Find Your ID</h1>
-            <p class="welcome-header__text">캣톡 계정을 찾아보라옹</p>
+            <p class="welcome-header__text">캣톡 아이디를 찾아보라옹</p>
         </header>
         <form id="login-form" onSubmit="return findUserData();" >
             <input type="text" placeholder="이름" name="findVal1" id="findVal1" />

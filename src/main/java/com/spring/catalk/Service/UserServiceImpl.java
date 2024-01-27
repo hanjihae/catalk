@@ -37,14 +37,17 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    public String findUserData( String userData1, String userData2, boolean findIdOrNot ){
-        String findData = "";
-        if(findIdOrNot){
-            findData = userMapper.selectUserId(userData1, userData2);
+    public String findUserData( String userData1, String userData2, String userData3 ){
+        if(userData3.equals("id")){
+            return userMapper.selectUserId(userData1, userData2);
         }else{
-            findData = userMapper.selectUserPasswd(userData1, userData2);
+            return userMapper.selectUserPasswd(userData1, userData2);
         }
-        return findData;
     }
+
+    public void changePw(String userId, String userPw){
+        userPw = Util.getHashedString(userPw, "SHA-256");
+        userMapper.updateUserPw(userId, userPw);
+        }
 
 }

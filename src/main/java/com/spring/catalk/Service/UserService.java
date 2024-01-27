@@ -11,7 +11,9 @@ public interface UserService {
 
     public UserDto findUserByIdAndPasswd(String userId, String userPw);
 
-    void userIdCheck(String userId, HttpServletResponse response) throws IOException;
+    public void userIdCheck(String userId, HttpServletResponse response) throws IOException;
 
-    String findUserData( String userData1, String userData2, boolean findIdOrNot );
+    public String findUserData( String userData1, String userData2, String userData3 );
+
+    public void changePw(String userId, String userPw);
 }

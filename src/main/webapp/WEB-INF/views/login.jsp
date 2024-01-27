@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="/css/styles.css" />
         <script>
             function findIdAndPasswd(){
-                var popup = window.open('/user/findPopup', '아이디/비밀번호 찾기', 'width=700px,height=800px,scrollbars=no,resizable=no');
+                var popup = window.open('/user/findIdPopup', '아이디/비밀번호 찾기', 'width=700px,height=800px,scrollbars=no,resizable=no');
             }
         </script>
     </head>

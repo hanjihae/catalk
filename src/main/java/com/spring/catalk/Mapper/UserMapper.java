@@ -4,6 +4,7 @@ import com.spring.catalk.Dto.UserDto;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface UserMapper {
@@ -22,4 +23,7 @@ public interface UserMapper {
 
     @Select("SELECT userPw FROM user WHERE userId=#{userData1} AND userPhone = #{userData2} and userActive = 1")
     String selectUserPasswd(String userData1, String userData2);
+
+    @Update("UPDATE user SET userPw = #{userPw} WHERE userId=#{userId} AND userActive = 1")
+    void updateUserPw(String userId, String userPw);
 }
