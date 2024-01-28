@@ -44,7 +44,7 @@
         </div>
         <div id="searchResults">
             <div class="user-component__column">
-                <img src="/img/haeil2.jpeg" class="user-component__avatar"/>
+                <img src="/img/smile_cat.png" class="user-component__avatar"/>
                 <div class="user-component__text">
                     <h4 class="user-component__title user-component__title--not-bold">Monkey</h4>
                     <h6 class="user-component__subtitle">catalk account2</h6>
@@ -54,7 +54,7 @@
         <main class="friends-screen">
             <div class="user-component" onClick="moveToProfile(${loginUser.userNum});">
                 <div class="user-component__column">
-                    <img src="/img/haeil1.jpeg" class="user-component__avatar user-component__avatar--xl"/>
+                    <img src="/img/smile_cat.png" class="user-component__avatar user-component__avatar--xl"/>
                     <div class="user-component__text">
                         <h4 class="user-component__title">${loginUser.userName}</h4>
                         <h6 class="user-component__subtitle">${profile.profileMessage}</h6>
@@ -71,7 +71,7 @@
                 <c:forEach var="friend" items="${friends}" >
                 <div class="user-component" onClick="moveToProfile(${friend.friendNum});">
                     <div class="user-component__column">
-                        <img src="/img/haeil2.jpeg" class="user-component__avatar"/>
+                        <img src="/img/smile_cat.png" class="user-component__avatar"/>
                         <div class="user-component__text">
                             <h4 class="user-component__title user-component__title--not-bold">
                             <c:choose>
@@ -104,7 +104,7 @@
                         <i class="far fa-comment fa-2x"></i>
                     </a>
                 </li>
-                <li class="nav__btn"><a class="nav__link" href="#"><img src="/img/haeil2.jpeg" /></a></li>
+                <li class="nav__btn"><a class="nav__link" href="#"><img src="/img/smile_cat.png" /></a></li>
             </ul>
         </nav>
 
