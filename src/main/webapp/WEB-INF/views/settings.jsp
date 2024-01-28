@@ -8,22 +8,6 @@
     <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
 </head>
 <body>
-<div class="status-bar">
-    <div class="status-bar__column">
-        <span>No Service</span>
-        <i class="fas fa-wifi"></i>
-
-    </div>
-    <div class="status-bar__column">
-        <span>18:43</span>
-    </div>
-    <div class="status-bar__column">
-        <span>100%</span>
-        <i class="fas fa-battery-full fa-lg"></i>
-        <i class="fas fa-bolt"></i>
-    </div>
-</div>
-
 <header class="alt-header">
     <div class="alt-header__column">
         <i class="fas fa-angle-left fa-2x"></i>

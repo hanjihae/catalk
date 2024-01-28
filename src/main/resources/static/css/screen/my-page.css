@@ -1,10 +1,271 @@
 /* phone */
 @media all and (max-width: 767px ) {
+    /* 표지 */
+    .my-page__wallpaper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 45vh;
+        background: url("/img/haeil2.jpeg") no-repeat center fixed;
+        background-size: cover;
+        color: white;
+        padding: 0 40px;
+        position: relative;
+    }
+
+    .my-page__avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 24px;
+        object-fit: cover;
+        margin-bottom: 10px;
+    }
+
+    .my-page__title {
+        margin-bottom: 10px;
+        font-size: 1.8em;
+    }
+
+    .my-page__subtitle {
+        font-size: 1.2em;
+    }
+
+    .my-page__header-icons {
+        position: absolute;
+        top: 15%;
+        right: 5vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .my-page__header-icons i {
+        margin: 0 20px 0 0;
+    }
+
+    .my-page__wallpaper button {
+        position: absolute;
+        top: 80%;
+        right: 5vw;
+        background-color: inherit;
+        color: white;
+        font-weight: 600;
+        border-radius: 28px;
+        font-size: 20px;
+        padding: 6px 38px;
+        border: 1px solid white;
+    }
+
+    .my-page__wallpaper button:focus {
+        color: var(--yellow);
+        border: 1px solid var(--yellow);
+    }
+
+    .my-page-screen {
+        padding: 3vh 3vw 5vh 3vw;
+    }
+
+    .my-page__board {
+        margin-bottom: 105px;
+    }
+
+    /* 카테고리 */
+    .my-page__category {
+        padding: 20px 30px;
+        border: 1px solid rgba(121,121,121,0.3);
+        border-radius: 15px;
+        box-shadow : 2px 3px 5px 0px rgba(0, 0, 0, 0.3);
+    }
+
+    .my-page__category-ul {
+        list-style: disc;
+    }
+
+    .my-page__category__title {
+        font-family: 'KIMM_Bold', sans-serif;
+        margin-bottom: 15px;
+    }
+
+    .my_page__category__subtitle {
+        margin-bottom: 5px;
+    }
+
+    .my-page__category-sub {
+        padding-left: 10px;
+        list-style: circle;
+        margin: 5px 0;
+    }
+
+    .my-page__category-sub__title {
+        margin-bottom: 5px;
+    }
+
+    /* 게시글 목록 */
+    .my-page__board-list {
+        padding: 20px 30px;
+        border: 1px solid rgba(121,121,121,0.3);
+        border-radius: 15px;
+        box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.3);
+        margin: 20px 0;
+    }
+
+    .my-page__board-category {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0 25px 0;
+    }
+
+    .my-page__board-list__title {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(121,121,121,0.3);
+    }
+
+    .my-page__board-list__title-fixed {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 5px;
+        color: rgba(121, 121, 121, 0.7);
+        border-bottom: 1px solid rgba(121, 121, 121, 0.3);
+        font-size: 15px;
+    }
+
+    .my-page__board-list__name {
+        width: 70%;
+    }
+
+    .my-page__board-list__cd {
+        width: 35%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .my-page__board-list__paging {
+        width: 30%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        margin: 20px auto auto auto;
+    }
+
+    /* 게시글 */
+    .my-page__board-component {
+        padding: 30px 5vw 20px 10px;
+        margin-left: 10px;
+        border-top: 1px solid rgba(121, 121, 121, 0.3);
+    }
+
+    .my-page__board-component__category {
+        margin-bottom: 15px;
+        color: rgba(121, 121, 121, 0.7);
+        display: flex;
+        justify-content: space-between;
+        margin-right: 15px;
+    }
+
+    .my-page__board-title {
+        font-family: 'KIMM_Bold', sans-serif;
+        font-size: 2em;
+    }
+
+    .my-page__board-text {
+        margin: 20px 5px;
+    }
+
+    .my-page__board-btns {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .my-page__board-ed button {
+        background-color: white;
+        color: black;
+        border-radius: 15px;
+        width: 50px;
+        height: 30px;
+        border: 1px solid black;
+    }
+
+    .my-page__board-ed button:focus {
+        background-color: white;
+        color: var(--yellow);
+        border-radius: 15px;
+        width: 50px;
+        height: 30px;
+        border: 1px solid var(--yellow);
+    }
+
+    /* 댓글 */
+    .my-page__board-comment__avatar {
+        width: 55px;
+        height: 55px;
+        object-fit: cover;
+        border-radius: 15px
+    }
+
+    .my-page__board-comment {
+        width: 100%;
+        box-sizing: border-box; /* 테두리와 여백을 요소의 크기에 포함시킴 */
+        display: flex;
+        flex-direction: column; /* 댓글을 수직으로 배치하도록 설정 */
+    }
+
+    .my-page__board-comment-written {
+        display: flex;
+        align-items: center; /* 왼쪽 정렬 */
+        padding: 5px 0;
+        margin: 10px 0;
+        border-bottom: 1px solid rgba(121, 121, 121, 0.3);
+    }
+
+    .my-page__board-comment-written__component {
+        display: flex;
+        flex-direction: column;
+        margin: 0 0 0 10px;
+        width: 100%; /* 부모 너비에 맞게 설정 */
+    }
+
+    .my-page__board-comment-written__component-name {
+        margin-bottom: 5px;
+    }
+
+    .my-page__board-comment-input {
+        display: flex;
+        width: 100%;
+    }
+
+    .my-page__board-comment-written__component-input {
+        flex: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    .my-page__board-comment-written__component-input input {
+        flex: 1;
+        height: 50px;
+    }
+
+    .my-page__board-comment-written__component-input button {
+        height: 50px;
+        margin-left: 10px;
+        background-color: var(--yellow);
+        color: white;
+        border-radius: 24px;
+        padding: 18px;
+        width: 70px;
+        border: none;
+    }
 
 }
 
 /* pc */
 @media all and (min-width:768px) {
+    /* 표지 */
     .my-page__wallpaper {
         display: flex;
         justify-content: space-between;
@@ -42,10 +303,35 @@
         font-size: 1.2em;
     }
 
-    .my-page__wallpaper i {
+    .my-page__header-icons {
         position: absolute;
         top: 15%;
         right: 5vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .my-page__header-icons i {
+        margin: 0 20px 0 0;
+    }
+
+    .my-page__wallpaper button {
+        position: absolute;
+        top: 80%;
+        right: 5vw;
+        background-color: inherit;
+        color: white;
+        font-weight: 600;
+        border-radius: 28px;
+        font-size: 20px;
+        padding: 6px 38px;
+        border: 1px solid white;
+    }
+
+    .my-page__wallpaper button:focus {
+        color: var(--yellow);
+        border: 1px solid var(--yellow);
     }
 
     .my-page-screen {
@@ -54,12 +340,19 @@
         justify-content: space-between;
     }
 
+    .my-page__board {
+        width: 75%;
+        margin-bottom: 105px;
+    }
+
+    /* 카테고리 */
     .my-page__category {
         order:2;
         width: 15vw;
         padding: 20px 30px;
-        border: 1px solid var(--yellow);
+        border: 1px solid rgba(121,121,121,0.3);
         border-radius: 15px;
+        box-shadow : 2px 3px 5px 0px rgba(0, 0, 0, 0.3);
     }
 
     .my-page__category-ul {
@@ -83,5 +376,162 @@
 
     .my-page__category-sub__title {
         margin-bottom: 5px;
+    }
+
+    /* 게시글 목록 */
+    .my-page__board-list {
+        padding: 20px 30px;
+    }
+
+    .my-page__board-category {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+
+    .my-page__board-list__title {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(121,121,121,0.3);
+    }
+
+    .my-page__board-list__title-fixed {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 5px;
+        color: rgba(121, 121, 121, 0.7);
+        border-bottom: 1px solid rgba(121, 121, 121, 0.3);
+        font-size: 15px;
+    }
+
+    .my-page__board-list__name {
+        width: 70%;
+    }
+
+    .my-page__board-list__cd {
+        width: 25%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .my-page__board-list__paging {
+        width: 30%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        margin: 20px auto auto auto;
+    }
+
+    /* 게시글 */
+    .my-page__board-component {
+        padding: 20px 5vw 20px 10px;
+        margin-left: 5px;
+        border-top: 1px solid rgba(121, 121, 121, 0.3);
+    }
+
+    .my-page__board-component__category {
+        margin-bottom: 8px;
+        color: rgba(121, 121, 121, 0.7);
+        display: flex;
+        justify-content: space-between;
+        margin-right: 15px;
+    }
+
+    .my-page__board-title {
+        font-family: 'KIMM_Bold', sans-serif;
+        font-size: 2em;
+    }
+
+    .my-page__board-text {
+        margin: 20px 5px;
+    }
+
+    .my-page__board-btns {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .my-page__board-ed button {
+        background-color: white;
+        color: black;
+        border-radius: 15px;
+        width: 50px;
+        height: 30px;
+        border: 1px solid black;
+    }
+
+    .my-page__board-ed button:focus {
+        background-color: white;
+        color: var(--yellow);
+        border-radius: 15px;
+        width: 50px;
+        height: 30px;
+        border: 1px solid var(--yellow);
+    }
+
+    /* 댓글 */
+    .my-page__board-comment__avatar {
+        width: 55px;
+        height: 55px;
+        object-fit: cover;
+        border-radius: 15px
+    }
+
+    .my-page__board-comment {
+        width: 100%;
+        box-sizing: border-box; /* 테두리와 여백을 요소의 크기에 포함시킴 */
+        display: flex;
+        flex-direction: column; /* 댓글을 수직으로 배치하도록 설정 */
+    }
+
+    .my-page__board-comment-written {
+        display: flex;
+        align-items: center; /* 왼쪽 정렬 */
+        padding: 5px 0;
+        margin: 10px 0;
+        border-bottom: 1px solid rgba(121, 121, 121, 0.3);
+    }
+
+    .my-page__board-comment-written__component {
+        display: flex;
+        flex-direction: column;
+        margin: 0 0 0 10px;
+        width: 100%; /* 부모 너비에 맞게 설정 */
+    }
+
+    .my-page__board-comment-written__component-name {
+        margin-bottom: 5px;
+    }
+
+    .my-page__board-comment-input {
+        display: flex;
+        width: 100%;
+    }
+
+    .my-page__board-comment-written__component-input {
+        flex: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    .my-page__board-comment-written__component-input input {
+        flex: 1;
+        height: 50px;
+    }
+
+    .my-page__board-comment-written__component-input button {
+        height: 50px;
+        margin-left: 10px;
+        background-color: var(--yellow);
+        color: white;
+        border-radius: 24px;
+        padding: 18px;
+        width: 70px;
+        border: none;
     }
 }

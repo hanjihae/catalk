@@ -8,21 +8,6 @@
         <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
     </head>
     <body class="chat-body">
-        <div class="status-bar">
-            <div class="status-bar__column">
-                <span>No Service</span>
-                <i class="fas fa-wifi"></i>
-
-            </div>
-            <div class="status-bar__column">
-                <span>18:43</span>
-            </div>
-            <div class="status-bar__column">
-                <span>100%</span>
-                <i class="fas fa-battery-full fa-lg"></i>
-                <i class="fas fa-bolt"></i>
-            </div>
-        </div>
         <header class="screen-header screen-header__chat">
             <div class="screen-header__chat-title">
                 <i class="fas fa-arrow-left fa-2x"></i>
