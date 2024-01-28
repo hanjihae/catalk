@@ -7,12 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
     @GetMapping(path = {"/","/home"})
     public String login() {
-        return "login";
-    }
-
-    @GetMapping(path = {"/friends"})
-    public String friends() {
-        return "friends";
+        return "user/login";
     }
 
     @GetMapping(path = {"/chats"})

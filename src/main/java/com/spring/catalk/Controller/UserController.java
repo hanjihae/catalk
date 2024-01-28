@@ -1,7 +1,5 @@
 package com.spring.catalk.Controller;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.spring.catalk.Dto.UserDto;
@@ -9,7 +7,6 @@ import com.spring.catalk.Service.UserService;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
-import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -29,7 +26,7 @@ public class UserController {
 
     @RequestMapping("/showSignUp") //로그인창에서 가입하기 누르면 가입창 보여줌
     public String showSignUp(){
-        return "sign-up";
+        return "user/sign-up";
     }
 
     @RequestMapping("/doSignUp") //가입창에서 가입하기 누르면 유저 정보 저장
@@ -41,7 +38,7 @@ public class UserController {
         userService.saveUser(user);
         if (user != null) {
             session.setAttribute("loginUser", user);
-            return "friends";
+            return "friend/friend_list";
         } else {
             model.addAttribute("signUpFail", "signUpFail");
             return "home";
@@ -53,7 +50,7 @@ public class UserController {
         UserDto user = userService.findUserByIdAndPasswd(userId, userPw);
         if (user != null) {
             session.setAttribute("loginUser", user);
-            return "redirect:/friends";
+            return "redirect:/friend/friend_list";
         } else {
             model.addAttribute("loginfail", user);
             return "redirect:/home";
@@ -67,12 +64,12 @@ public class UserController {
 
     @RequestMapping("/findIdPopup")
     public String showFindIdPopup(){
-        return "findIdPopup";
+        return "user/findIdPopup";
     }
 
     @RequestMapping("/findPwPopup")
     public String showFindPwPopup(){
-        return "findPwPopup";
+        return "user/findPwPopup";
     }
 
     @RequestMapping(value ="/findUser", method = RequestMethod.POST, produces = "application/json; charset=utf8") @ResponseBody

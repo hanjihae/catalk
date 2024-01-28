@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -51,28 +52,35 @@
             </div>
         </div>
         <main class="friends-screen">
-            <div class="user-component">
+            <div class="user-component" onClick="moveToProfile(${loginUser.userNum});">
                 <div class="user-component__column">
                     <img src="/img/haeil1.jpeg" class="user-component__avatar user-component__avatar--xl"/>
                     <div class="user-component__text">
-                        <h4 class="user-component__title">해일</h4>
-                        <h6 class="user-component__subtitle">Sorry, try again.</h6>
+                        <h4 class="user-component__title">${loginUser.userName}</h4>
+                        <h6 class="user-component__subtitle">${profile.profileMessage}</h6>
                     </div>
                 </div>
                 <div class="user-component__column"></div>
             </div>
             <div class="friends-screen__friends">
                 <div class="friends-screen__friends-header">
-                    <span>친구 106</span>
+                    <span>친구 ${friendCount}</span>
                     <i class="fas fa-chevron-up fa-xs"></i>
                     <!-- chevron down icon <i class="fas fa-chevron-down fa-xs"></i> -->
                 </div>
-                <div class="user-component">
+                <c:forEach var="friend" items="${friends}" >
+                <div class="user-component" onClick="moveToProfile(${friend.friendNum});">
                     <div class="user-component__column">
                         <img src="/img/haeil2.jpeg" class="user-component__avatar"/>
                         <div class="user-component__text">
-                            <h4 class="user-component__title user-component__title--not-bold">Monkey</h4>
-                            <h6 class="user-component__subtitle">catalk account2</h6>
+                            <h4 class="user-component__title user-component__title--not-bold">
+                            <c:choose>
+                                <c:when test="${not empty friend.friendName}">${friend.friendName}</c:when>
+                                <c:when test="${not empty friend.profileName}">${friend.profileName}</c:when>
+                                <c:otherwise>${friend.userName}</c:otherwise>
+                            </c:choose>
+                            </h4>
+                            <h6 class="user-component__subtitle">${friend.profileMessage}</h6>
                         </div>
                     </div>
                     <div class="user-component__column">
@@ -81,6 +89,8 @@
                         </div>
                     </div>
                 </div>
+                </c:forEach>
+
             </div>
         </main>
 
@@ -127,6 +137,11 @@
                 var searchResultHTML = '<p>검색 결과: ' + searchTerm + '</p>';
                 searchResultsContainer.innerHTML = searchResultHTML;
             }
+
+            function moveToProfile(userNum){ // 프로필 창으로 이동
+                location.href="/my-profile?userNum="+userNum;
+            }
+
         </script>
     </body>
 </html>
