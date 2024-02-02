@@ -11,21 +11,6 @@
 
     </head>
     <body class="height-100vh">
-        <div class="status-bar">
-            <div class="status-bar__column">
-                <span>No Service</span>
-                <i class="fas fa-wifi"></i>
-
-            </div>
-            <div class="status-bar__column">
-                <span>18:43</span>
-            </div>
-            <div class="status-bar__column">
-                <span>100%</span>
-                <i class="fas fa-battery-full fa-lg"></i>
-                <i class="fas fa-bolt"></i>
-            </div>
-        </div>
         <header class="welcome-header welcome-header__signup">
             <img src="/img/logo.png" class="welcome-header__logo" />
             <h1 class="welcome-header__title">Welcome to CATALK</h1>
