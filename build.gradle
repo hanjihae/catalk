@@ -41,6 +41,7 @@ dependencies {
 
     // MyBatis 라이브러리 의존성 추가
     runtimeOnly 'mysql:mysql-connector-java:8.0.28'
+
 }
 
 tasks.named('bootBuildImage') {
