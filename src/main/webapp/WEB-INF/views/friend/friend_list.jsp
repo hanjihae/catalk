@@ -82,7 +82,7 @@
             <ul class="nav__list">
                 <li class="nav__btn"><a class="nav__link" href="#"><i class="fas fa-user fa-2x"></i></a></li>
                 <li class="nav__btn">
-                    <a class="nav__link" href="#">
+                    <a class="nav__link" href="/chats/chat-list?userNum=${loginUser.userNum}">
                         <!-- new message 세자리수 되면 동그라미 넘침 해결필요함 -->
                         <span class="nav__notification badge">3</span>
                         <i class="far fa-comment fa-2x"></i>
