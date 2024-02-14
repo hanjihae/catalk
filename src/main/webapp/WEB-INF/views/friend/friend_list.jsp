@@ -19,7 +19,7 @@
             </div>
             <div class="screen-header__icons">
                 <span class="friend-search"><i class="fas fa-search fa-lg"></i></span>
-                <span><i class="fas fa-user-plus fa-lg"></i></span>
+                <span><i class="fas fa-user-plus fa-lg" id="findNewFriend"></i></span>
                 <span><i class="fas fa-cog fa-lg"></i></span>
             </div>
         </header>
