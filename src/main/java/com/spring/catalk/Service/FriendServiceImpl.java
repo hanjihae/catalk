@@ -17,12 +17,19 @@ public class FriendServiceImpl implements FriendService {
     private FriendMapper friendMapper;
 
     public List<FriendDto> findFriendList(int userNum){
-
         return friendMapper.selectFriendsList(userNum);
     }
 
     public int findFriendCount(int userNum){
         return friendMapper.selectFriendCount(userNum);
+    }
+
+    public List<FriendDto> findMyFriendList(int userNum, String searchVal){
+        return friendMapper.selectMyFriendsList(userNum, searchVal);
+    }
+
+    public int findMyFriendCount(int userNum, String searchVal){
+        return friendMapper.selectMyFriendCount(userNum, searchVal);
     }
 
 }

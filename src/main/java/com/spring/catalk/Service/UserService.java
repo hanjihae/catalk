@@ -16,4 +16,6 @@ public interface UserService {
     public String findUserData( String userData1, String userData2, String userData3 );
 
     public void changePw(String userId, String userPw);
+
+
 }

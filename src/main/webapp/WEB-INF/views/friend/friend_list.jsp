@@ -19,12 +19,12 @@
             </div>
             <div class="screen-header__icons">
                 <span class="friend-search"><i class="fas fa-search fa-lg"></i></span>
-                <span><i class="fas fa-user-plus fa-lg"></i></span>
+                <span><i class="fas fa-user-plus fa-lg" id="findNewFriend"></i></span>
                 <span><i class="fas fa-cog fa-lg"></i></span>
             </div>
         </header>
         <div class="search-container">
-            <input type="text" id="searchInput" placeholder="이름으로 검색">
+            <input type="text" id="searchInput" placeholder="이름으로 검색" onInput="searchInput();">
         </div>
         <div id="searchResults">
             <div class="user-component__column">
@@ -46,35 +46,8 @@
                 </div>
                 <div class="user-component__column"></div>
             </div>
-            <div class="friends-screen__friends">
-                <div class="friends-screen__friends-header">
-                    <span>친구 ${friendCount}</span>
-                    <i class="fas fa-chevron-up fa-xs"></i>
-                    <!-- chevron down icon <i class="fas fa-chevron-down fa-xs"></i> -->
-                </div>
-                <c:forEach var="friend" items="${friends}" >
-                <div class="user-component" onClick="moveToProfile(${friend.friendNum});">
-                    <div class="user-component__column">
-                        <img src="/img/smile_cat.png" class="user-component__avatar"/>
-                        <div class="user-component__text">
-                            <h4 class="user-component__title user-component__title--not-bold">
-                            <c:choose>
-                                <c:when test="${not empty friend.friendName}">${friend.friendName}</c:when>
-                                <c:when test="${not empty friend.profileName}">${friend.profileName}</c:when>
-                                <c:otherwise>${friend.userName}</c:otherwise>
-                            </c:choose>
-                            </h4>
-                            <h6 class="user-component__subtitle">${friend.profileMessage}</h6>
-                        </div>
-                    </div>
-                    <div class="user-component__column">
-                        <div>
-                            <span class="user-component__column-music">(여자)아이들 - 퀸카(QueenCard)</span>
-                        </div>
-                    </div>
-                </div>
-                </c:forEach>
-
+            <div class="friends-screen__friends" id="friend_list_inner">
+                <jsp:include page="friend_list_inner.jsp" />
             </div>
         </main>
 
@@ -111,16 +84,28 @@
                 });
             }
 
-            document.getElementById('searchButton').addEventListener('click', function() {
-                var searchTerm = document.getElementById('searchInput').value;
-                displaySearchResults(searchTerm);
-            });
 
-            function displaySearchResults(searchTerm) {
-                var searchResultsContainer = document.getElementById('searchResults');
-                var searchResultHTML = '<p>검색 결과: ' + searchTerm + '</p>';
-                searchResultsContainer.innerHTML = searchResultHTML;
+            function searchInput(){ //검색어 입력되면 결과 화면에 보여주기
+                var searchVal = document.getElementById('searchInput').value;
+                fetch("/friend/friend_list_inner?searchVal=" + searchVal)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Network response was not ok");
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('friend_list_inner').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                });
             }
+
+
+
+
+
 
             function moveToProfile(userNum){ // 프로필 창으로 이동
                 location.href="/my-profile?userNum="+userNum;

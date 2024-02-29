@@ -9,4 +9,8 @@ public interface FriendService {
     public List<FriendDto> findFriendList(int userNum);
 
     public int findFriendCount(int userNum);
+
+    public List<FriendDto> findMyFriendList(int userNum, String searchVal);
+
+    public int findMyFriendCount(int userNum, String searchVal);
 }
