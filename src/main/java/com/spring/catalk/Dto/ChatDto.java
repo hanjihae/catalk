@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class ChatsDto {
+public class ChatDto {
     private int chatNum;
 
     private String chatName;
@@ -13,4 +13,5 @@ public class ChatsDto {
     private Date chatDate;
     private String chatContent;
 
+    private int userNum;
 }

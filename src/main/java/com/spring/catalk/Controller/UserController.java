@@ -2,7 +2,10 @@ package com.spring.catalk.Controller;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.spring.catalk.Dto.ChatDto;
+import com.spring.catalk.Dto.ChatJoinDto;
 import com.spring.catalk.Dto.UserDto;
+import com.spring.catalk.Service.ChatService;
 import com.spring.catalk.Service.UserService;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -24,6 +27,10 @@ public class UserController {
     @Qualifier("userService")
     private UserService userService;
 
+    @Autowired
+    @Qualifier("chatService")
+    private ChatService chatService;
+
     @RequestMapping("/showSignUp") //로그인창에서 가입하기 누르면 가입창 보여줌
     public String showSignUp(){
         return "user/sign-up";
@@ -36,13 +43,22 @@ public class UserController {
             return "redirect:/user/showSignUp";
         }
         userService.saveUser(user);
+
         if (user != null) {
             session.setAttribute("loginUser", user);
+
+            ChatJoinDto chatJoin = chatService.createChat(user);
+            session.setAttribute("chat", chatJoin);
+
+            // 나만의 채팅 추가
+            chatService.insertMyChat(chatJoin.getChatNum(), user.getUserName());
+
             return "friend/friend_list";
         } else {
             model.addAttribute("signUpFail", "signUpFail");
             return "home";
         }
+
     }
 
     @RequestMapping("/doLogin")//로그인처리

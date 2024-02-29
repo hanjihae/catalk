@@ -35,4 +35,7 @@ public class UserDto {
 
     private boolean userSearch;
 
+
+    private int chatNum;
+
 }

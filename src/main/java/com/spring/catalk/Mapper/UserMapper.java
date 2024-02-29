@@ -1,15 +1,13 @@
 package com.spring.catalk.Mapper;
 
 import com.spring.catalk.Dto.UserDto;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface UserMapper {
 
     @Insert("INSERT INTO user (userId, userPw, userName, userPhone, userDate) VALUES (#{userId}, #{userPw}, #{userName}, #{userPhone}, #{userDate})")
+    @Options(useGeneratedKeys = true, keyProperty = "userNum")
     void insertUser(UserDto user);
 
     @Select("SELECT * FROM USER WHERE userId = #{userId} and userPw = #{userPw} and userActive = 1")
