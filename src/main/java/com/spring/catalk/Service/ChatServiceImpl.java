@@ -42,6 +42,10 @@ public class ChatServiceImpl implements ChatService {
         chatMapper.insertMyChat(chatNum, userName);
     };
 
+    public List<ChatDto> getLastChatByUserNum(int userNum) {
+        return chatMapper.getLastChatListByUserNum(userNum);
+    }
+
     // chat 불러오기
     public List<ChatDto> getChatListByUserNum(int userNum) {
         return chatMapper.getChatListByUserNum(userNum);

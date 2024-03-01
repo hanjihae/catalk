@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="user-component__column">
-                    <span class="user-component__time">${chat.chatDate}</span>
+                    <span class="user-component__time">${chat.formattedDate}</span>
                     <div class="badge">1</div>
                 </div>
             </div>

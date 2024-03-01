@@ -8,6 +8,15 @@ import java.util.List;
 
 @Mapper
 public interface ChatMapper {
+    // 마지막 채팅 불러오기
+    @Select("SELECT c.chatNum, c.chatName , c.chatActive, c.chatDate, c.chatContent " +
+            "FROM chat c " +
+            "INNER JOIN chatjoin cj ON c.chatNum = cj.chatNum " +
+            "INNER JOIN user u ON cj.userNum = u.userNum " +
+            "WHERE u.userNum = #{userNum} " +
+            "AND c.chatDate = (SELECT MAX(chatDate) FROM chat c2 WHERE c2.chatNum = c.chatNum)")
+    public List<ChatDto> getLastChatListByUserNum(int userNum);
+
     // 채팅 불러오기
     @Select("SELECT c.chatNum, c.chatName , c.chatActive, c.chatDate, c.chatContent " +
             "FROM chat c " +

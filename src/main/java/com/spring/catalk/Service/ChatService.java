@@ -17,6 +17,9 @@ public interface ChatService {
     // 나와의 채팅 추가
     public void insertMyChat(int chatNum, String userName);
 
+    // 마지막 채팅 불러오기
+    public List<ChatDto> getLastChatByUserNum(int userNum);
+
     // 모든 채팅 불러오기
     public List<ChatDto> getChatListByUserNum(int userNum);
 }

@@ -14,4 +14,5 @@ public class ChatDto {
     private String chatContent;
 
     private int userNum;
+    private String formattedDate;
 }
