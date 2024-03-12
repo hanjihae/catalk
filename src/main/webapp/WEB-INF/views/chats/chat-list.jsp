@@ -25,7 +25,7 @@
         </header>
         <main class="main-screen">
             <c:forEach var="chat" items="${chatList}" >
-            <div class="user-component">
+            <div class="user-component" data-no="${chat.chatNum}">
                 <div class="user-component__column">
                     <img src="/img/haeil2.jpeg" class="user-component__avatar"/>
                     <div class="user-component__text">
@@ -57,5 +57,16 @@
         </nav>
 
         <script src="https://kit.fontawesome.com/3aeedf8ddf.js" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function () {
+               var chatRooms = document.querySelectorAll('.user-component');
+               chatRooms.forEach(function (chatRoom) {
+                   chatRoom.addEventListener('click', function() {
+                        var chatNum = chatRoom.getAttribute('data-no');
+                        window.location.href = 'chat-room?chatNum=' + chatNum;
+                   });
+               });
+            });
+        </script>
     </body>
 </html>

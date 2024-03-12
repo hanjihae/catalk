@@ -71,4 +71,18 @@ public class ChatController {
         return "chats/chat-list";
     }
 
+    @RequestMapping(path={"/chat-room"})
+    public String chatRoom(HttpSession session, Model model) {
+        UserDto user = (UserDto) session.getAttribute("loginUser");
+        if (user == null) {
+            return "redirect:/home";
+        }
+        int userNum = user.getUserNum();
+        List<ChatDto> chatList = chatService.getChatListByUserNum(userNum);
+
+        model.addAttribute("chatList", chatList);
+
+        return "chats/chat-room";
+    }
+
 }
