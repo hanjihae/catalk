@@ -64,7 +64,19 @@ public class FriendController {
         return "friend/friend_list_inner";
     }
 
+    @RequestMapping(value ="/friend_find_inner")
+    public String findNewFriend(String searchVal, HttpSession session, Model model) throws IOException {
+        UserDto user = (UserDto) session.getAttribute("loginUser");
+        ProfileDto profile = profileService.findUserProfile(user.getUserNum());
+        List<FriendDto> friends = friendService.findMyFriendList(user.getUserNum(), searchVal);
+        int friendCount = friendService.findMyFriendCount(user.getUserNum(), searchVal);
 
+        model.addAttribute("profile", profile);
+        model.addAttribute("friends", friends);
+        model.addAttribute("friendCount", friendCount);
+
+        return "friend/friend_list_inner";
+    }
 
 
 

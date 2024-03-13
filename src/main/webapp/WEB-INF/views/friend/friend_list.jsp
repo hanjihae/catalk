@@ -18,13 +18,14 @@
                 <h1 class="screen-header__title">친구</h1>
             </div>
             <div class="screen-header__icons">
-                <span class="friend-search"><i class="fas fa-search fa-lg"></i></span>
-                <span><i class="fas fa-user-plus fa-lg" id="findNewFriend"></i></span>
+                <span class="friend-search"><i class="fas fa-search fa-lg" onClick="showSearchInput();"></i></span>
+                <span><i class="fas fa-user-plus fa-lg" onClick="showFindInput();"></i></span>
                 <span><i class="fas fa-cog fa-lg"></i></span>
             </div>
         </header>
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="이름으로 검색" onInput="searchInput();">
+            <input type="text" id="findInput" placeholder="이름으로 찾기" onInput="findInput();" >
         </div>
         <div id="searchResults">
             <div class="user-component__column">
@@ -71,17 +72,24 @@
             // 클래스명이 'friend-search'인 엘리먼트를 모두 선택
             var friendSearchIcons = document.getElementsByClassName('friend-search');
 
-            // 각각의 아이콘에 대해 이벤트 리스너 추가
-            for (var i = 0; i < friendSearchIcons.length; i++) {
-                friendSearchIcons[i].addEventListener('click', function() {
-                    // friendSearchIcon 클릭 시 검색창을 토글하여 나타나거나 숨김
-                    var searchContainer = document.querySelector('.search-container');
-                    if (searchContainer.style.display === 'none') {
-                        searchContainer.style.display = 'block';
-                    } else {
-                        searchContainer.style.display = 'none';
-                    }
-                });
+            function showSearchInput(){
+                var friendSearchIcon = document.getElementById('searchInput');
+                if (friendSearchIcon.style.display === 'none') {
+                    document.getElementById('findInput').style.display = 'none';
+                    friendSearchIcon.style.display = 'block';
+                } else {
+                    friendSearchIcon.style.display = 'none';
+                }
+            }
+
+            function showFindInput(){
+                var friendFindIcon = document.getElementById('findInput');
+                if (friendFindIcon.style.display === 'none') {
+                    document.getElementById('searchInput').style.display = 'none';
+                    friendFindIcon.style.display = 'block';
+                } else {
+                    friendFindIcon.style.display = 'none';
+                }
             }
 
 
@@ -102,10 +110,13 @@
                 });
             }
 
+            function findInput(){ //검색어 입력되면 결과 화면에 보여주기
+                var searchVal = document.getElementById('findInput').value;
+
+                //검색해서 나온 친구후보들을 화면에 어떻게 보여주고 어떻게 선택하게 할지 고민됨
 
 
-
-
+            }
 
             function moveToProfile(userNum){ // 프로필 창으로 이동
                 location.href="/my-profile?userNum="+userNum;

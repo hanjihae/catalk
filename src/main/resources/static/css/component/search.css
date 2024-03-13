@@ -1,15 +1,26 @@
 .search-container {
-    display: none;
     text-align: center;
 }
 
 #searchInput {
+    display:none;
     outline: none;
     width: 90vw;
     padding: 10px;
 }
 
 #searchInput:focus {
+    outline: var(--yellow);
+}
+
+#findInput {
+    display:none;
+    outline: none;
+    width: 90vw;
+    padding: 10px;
+}
+
+#findInput:focus {
     outline: var(--yellow);
 }
 
