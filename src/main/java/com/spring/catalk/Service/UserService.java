@@ -4,6 +4,7 @@ import com.spring.catalk.Dto.UserDto;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.List;
 
 public interface UserService {
 
@@ -16,6 +17,8 @@ public interface UserService {
     public String findUserData( String userData1, String userData2, String userData3 );
 
     public void changePw(String userId, String userPw);
+
+    public List<UserDto> findUserList(int userNo, String findFriendSearch);
 
 
 }

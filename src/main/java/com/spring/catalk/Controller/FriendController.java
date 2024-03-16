@@ -14,9 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/friend")
@@ -64,20 +62,19 @@ public class FriendController {
         return "friend/friend_list_inner";
     }
 
-    @RequestMapping(value ="/friend_find_inner")
-    public String findNewFriend(String searchVal, HttpSession session, Model model) throws IOException {
+    @RequestMapping(value ="/findFriendPopup")
+    public String findNewFriend() { return "friend/findFriendPopup"; }
+
+
+    @RequestMapping(value ="/findFriendPopupList")
+    public String findNewFriendList(String findFriendSearch, HttpSession session, Model model) {
+        //내 친구 아닌 사람들 중 검색어랑 연관 있는 리스트
         UserDto user = (UserDto) session.getAttribute("loginUser");
-        ProfileDto profile = profileService.findUserProfile(user.getUserNum());
-        List<FriendDto> friends = friendService.findMyFriendList(user.getUserNum(), searchVal);
-        int friendCount = friendService.findMyFriendCount(user.getUserNum(), searchVal);
+        List<UserDto> userList = userService.findUserList(user.getUserNum(), findFriendSearch);
 
-        model.addAttribute("profile", profile);
-        model.addAttribute("friends", friends);
-        model.addAttribute("friendCount", friendCount);
-
-        return "friend/friend_list_inner";
+        model.addAttribute("userList", userList);
+        return "friend/findFriendPopup";
     }
-
 
 
 }

@@ -25,7 +25,6 @@
         </header>
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="이름으로 검색" onInput="searchInput();">
-            <input type="text" id="findInput" placeholder="이름으로 찾기" onInput="findInput();" >
         </div>
         <div id="searchResults">
             <div class="user-component__column">
@@ -75,7 +74,6 @@
             function showSearchInput(){
                 var friendSearchIcon = document.getElementById('searchInput');
                 if (friendSearchIcon.style.display === 'none') {
-                    document.getElementById('findInput').style.display = 'none';
                     friendSearchIcon.style.display = 'block';
                 } else {
                     friendSearchIcon.style.display = 'none';
@@ -83,13 +81,7 @@
             }
 
             function showFindInput(){
-                var friendFindIcon = document.getElementById('findInput');
-                if (friendFindIcon.style.display === 'none') {
-                    document.getElementById('searchInput').style.display = 'none';
-                    friendFindIcon.style.display = 'block';
-                } else {
-                    friendFindIcon.style.display = 'none';
-                }
+                var popup = window.open('/friend/findFriendPopup', '친구 찾기', 'width=700px,height=800px,scrollbars=no,resizable=no');
             }
 
 

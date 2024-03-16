@@ -3,6 +3,8 @@ package com.spring.catalk.Mapper;
 import com.spring.catalk.Dto.UserDto;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 @Mapper
 public interface UserMapper {
 
@@ -24,4 +26,11 @@ public interface UserMapper {
 
     @Update("UPDATE user SET userPw = #{userPw} WHERE userId=#{userId} AND userActive = 1")
     void updateUserPw(String userId, String userPw);
+
+    @Select("SELECT u.* FROM user u LEFT JOIN friend f ON u.userNum = f.friendNum AND f.userNum = #{userNo} WHERE u.userNum <> #{userNo} " +
+            "  AND f.friendNum IS NULL AND u.userActive = 1 AND u.userSearch = 1 AND u.userName LIKE '%${findFriendSearch}%'")
+    List<UserDto> selectFindUserList(int userNo, String findFriendSearch);
+
+
+
 }

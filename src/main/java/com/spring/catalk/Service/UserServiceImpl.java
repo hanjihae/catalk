@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.List;
 
 @Service("userService") @Repository
 public class UserServiceImpl implements UserService {
@@ -49,5 +50,9 @@ public class UserServiceImpl implements UserService {
         userPw = Util.getHashedString(userPw, "SHA-256");
         userMapper.updateUserPw(userId, userPw);
         }
+
+    public List<UserDto> findUserList(int userNo, String findFriendSearch){
+        return userMapper.selectFindUserList(userNo, findFriendSearch);
+    }
 
 }
