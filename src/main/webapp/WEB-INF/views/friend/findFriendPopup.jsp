@@ -33,8 +33,9 @@
                         return response.text();
                     })
                     .then(data => {
-                        console.log(data);
                         window.close();
+                        window.opener.location.reload();
+
                       })
                     .catch(error => {
                       alert("[Error] 다시 시도해주세요");
