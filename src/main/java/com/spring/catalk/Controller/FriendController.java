@@ -11,7 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
 import java.util.List;
@@ -74,6 +77,14 @@ public class FriendController {
 
         model.addAttribute("userList", userList);
         return "friend/findFriendPopup";
+    }
+
+    @RequestMapping(value ="/addNewFriend") @ResponseBody
+    public String addNewFriend(@RequestParam int newFriendNo, HttpSession session) {
+        //내 친구 아닌 사람들 중 검색어랑 연관 있는 리스트
+        UserDto user = (UserDto) session.getAttribute("loginUser");
+        friendService.addNewFriend(user.getUserNum(), newFriendNo);
+        return "data";
     }
 
 

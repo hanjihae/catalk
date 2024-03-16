@@ -13,4 +13,6 @@ public interface FriendService {
     public List<FriendDto> findMyFriendList(int userNum, String searchVal);
 
     public int findMyFriendCount(int userNum, String searchVal);
+
+    public void addNewFriend(int userNum, int newFriendNo);
 }

@@ -32,4 +32,8 @@ public class FriendServiceImpl implements FriendService {
         return friendMapper.selectMyFriendCount(userNum, searchVal);
     }
 
+    public void addNewFriend(int userNum, int newFriendNo){
+        friendMapper.insertNewFriend(userNum, newFriendNo);
+    };
+
 }

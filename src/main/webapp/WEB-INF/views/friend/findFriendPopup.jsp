@@ -20,7 +20,25 @@
             }
 
             function addNewFriend(addFriendNo){
-                console.log(addFriendNo);
+                // 2. fetch로 정보 찾아오기
+                fetch("/friend/addNewFriend?newFriendNo="+addFriendNo, {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                }).then(response => {
+                        if (!response.ok) {
+                          throw new Error("Network response was not ok");
+                        }
+                        return response.text();
+                    })
+                    .then(data => {
+                        console.log(data);
+                        window.close();
+                      })
+                    .catch(error => {
+                      alert("[Error] 다시 시도해주세요");
+                    });
             }
 
         </script>
