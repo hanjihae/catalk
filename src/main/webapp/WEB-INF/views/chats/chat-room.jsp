@@ -13,7 +13,7 @@
             <div class="screen-header__chat-title">
                 <i class="fas fa-arrow-left fa-2x"></i>
                 <img src="/img/haeil1.jpeg" class="screen-header__chat-img" />
-                <h1 class="screen-header__title">해일2</h1>
+                <h1 class="screen-header__title">${chatName}</h1>
             </div>
             <div class="screen-header__icons">
                 <span><i class="fas fa-search fa-lg"></i></span>
@@ -28,29 +28,38 @@
             <i class="fas fa-chevron-down"></i>
         </div>
         <main class="chat-screen">
-            <div class="date-line">
-                <time datetime="2021-03-29">2024년 1월 15일 월요일</time>
-            </div>
-            <c:forEach var="chat" items="${chatList}">
-            <div class="wrap">
-                <div class="chat friend-chat">
-                    <div><img src="/img/haeil1.jpeg" class="chat__avatar" /></div>
-                    <div class="chat-text">
-                        <span class="chat-text__name">해일2</span>
-                        <span class="chat-text__textbox">어휴 손시려워 죽겠어요ㅠㅠ</span>
+            <c:forEach var="chat" items="${chatList}" varStatus="loop">
+                <c:if test="${loop.index == 0 || !chat.chatDate.equals(chatList[loop.index - 1].chatDate)}">
+                    <div class="date-line">
+                        <time datetime="${chat.chatDate}">${chat.chatDate}</time>
                     </div>
+                </c:if>
+                <div class="wrap">
+                    <c:choose>
+                        <c:when test="${!chat.chatName.equals(loginUser.userName)}">
+                            <div class="chat friend-chat">
+                                <div><img src="/img/haeil1.jpeg" class="chat__avatar" /></div>
+                                <div class="chat-text">
+                                    <span class="chat-text__name">${chat.chatName}</span>
+                                    <span class="chat-text__textbox">${chat.chatContent}</span>
+                                </div>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="chat my-chat">
+                                <div class="chat-text-me">
+                                    <span class="chat-text__textbox-me">${chat.chatContent}</span>
+                                </div>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
-                <div class="chat my-chat">
-                    <div class="chat-text-me">
-                        <span class="chat-text__textbox-me">왜 벌써 2024년인지 모르겠어요~~~</span>
-                        <span class="chat-text__textbox-me">위에 거 글자수에 맞게 크기 줄어들었음 좋겠는데 왜 아깐 되고 지금은 안되냔 말이냐~이 말만 벌써 오백번 한 것 같아요. 진짜 테스트용으로 쓸말 더럽게 없다. 길면 텍스트가 이렇게 됩니다. </span>
-                    </div>
-                </div>
-            </div>
             </c:forEach>
             <div class="insert-content">
-                <form name="chatform" action="#" method="post">
-                    <textarea name="chat-insert" required></textarea>
+                <form name="chatform" action="sendChat" method="post">
+                    <input type="hidden" name="chatNum" value="${chatNum}">
+                    <input type="hidden" name="chatName" value="${chatName}">
+                    <textarea name="chatContent" required></textarea>
                     <input type="submit" class="chat-submit" value="전송">
                 </form>
                 <!-- 채팅 입력 관련 기능(파일 첨부, 캡쳐 등) -->

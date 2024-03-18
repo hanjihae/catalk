@@ -18,6 +18,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 
 @Controller @RequestMapping("/user")
@@ -47,11 +48,19 @@ public class UserController {
         if (user != null) {
             session.setAttribute("loginUser", user);
 
-            ChatJoinDto chatJoin = chatService.createChat(user);
-            session.setAttribute("chat", chatJoin);
+            ChatDto chat = new ChatDto();
+            chat.setChatName(user.getUserName());
 
-            // 나만의 채팅 추가
-            chatService.insertMyChat(chatJoin.getChatNum(), user.getUserName());
+//            chatService.createChatRoom(chat);
+
+//            ChatJoinDto chatJoin = chatService.createChat(user);
+//            session.setAttribute("chat", chatJoin);
+//
+//            // 나만의 채팅 추가
+//            chat.setChatNum(chatJoin.getChatNum());
+//            chat.setChatName(user.getUserName()); // 현재 날짜 및 시간 설정
+//            chat.setChatContent("나와의 채팅을 시작하라옹!"); // 초기 채팅 내용 설정
+//            chatService.insertChat(chat);
 
             return "friend/friend_list";
         } else {

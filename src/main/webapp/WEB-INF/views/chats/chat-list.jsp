@@ -19,7 +19,7 @@
             </div>
             <div class="screen-header__icons">
                 <span><i class="fas fa-search fa-lg"></i></span>
-                <span><i class="fas fa-comments fa-lg"></i></span>
+                <span class="create-chat"><i class="fas fa-comments fa-lg"></i></span>
                 <span><i class="fas fa-cog fa-lg"></i></span>
             </div>
         </header>
@@ -30,7 +30,7 @@
                     <img src="/img/haeil2.jpeg" class="user-component__avatar"/>
                     <div class="user-component__text">
                         <h4 class="user-component__title user-component__title--not-bold">${chat.chatName}</h4>
-                        <h6 class="user-component__subtitle">${chat.chatContent}</h6>
+                        <h6 class="user-component__subtitle">마지막 메세지 띄워야지용</h6>
                     </div>
                 </div>
                 <div class="user-component__column">
@@ -59,13 +59,22 @@
         <script src="https://kit.fontawesome.com/3aeedf8ddf.js" crossorigin="anonymous"></script>
         <script type="text/javascript">
             document.addEventListener('DOMContentLoaded', function () {
-               var chatRooms = document.querySelectorAll('.user-component');
-               chatRooms.forEach(function (chatRoom) {
-                   chatRoom.addEventListener('click', function() {
+
+                // 채팅방 클릭시 해당 채팅방으로 이동
+                var chatRooms = document.querySelectorAll('.user-component');
+                var userNum = <%= request.getAttribute("userNum") %>;
+                chatRooms.forEach(function (chatRoom) {
+                    chatRoom.addEventListener('click', function() {
                         var chatNum = chatRoom.getAttribute('data-no');
-                        window.location.href = 'chat-room?chatNum=' + chatNum;
-                   });
-               });
+                        window.location.href = 'chat-room?userNum='+ userNum +'&chatNum=' + chatNum;
+                    });
+                });
+
+                // 채팅방 만들기 아이콘 클릭시 채팅방 만들기 modal
+                var createChat = document.querySelector('.create-chat');
+                 createChat.addEventListener('click', function() {
+                     alert('Create chat clicked!');
+                 });
             });
         </script>
     </body>

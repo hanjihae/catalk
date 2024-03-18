@@ -2,6 +2,7 @@ package com.spring.catalk.Service;
 
 import com.spring.catalk.Dto.ChatDto;
 import com.spring.catalk.Dto.ChatJoinDto;
+import com.spring.catalk.Dto.MessageDto;
 import com.spring.catalk.Dto.UserDto;
 import com.spring.catalk.Mapper.ChatMapper;
 import lombok.Setter;
@@ -20,34 +21,50 @@ public class ChatServiceImpl implements ChatService {
     @Autowired
     private ChatMapper chatMapper;
 
-    // 채팅방 만들기
-    @Override
-    @Transactional
-    public ChatJoinDto createChat(UserDto user) {
-        // 채팅방 생성
-        ChatJoinDto chatJoin = new ChatJoinDto();
-        chatJoin.setUserNum(user.getUserNum());
-        chatMapper.insertChatJoin(chatJoin);
-        // 생성된 채팅방의 번호를 가져와서 반환
-        return chatMapper.getChatByUserNum(user.getUserNum());
-    }
-
-    // 회원번호로 채팅방번호 불러오기
-    public ChatJoinDto getChatByUserNum(int userNum) {
-        return chatMapper.getChatByUserNum(userNum);
-    };
-
-    // 나와의 채팅 추가
-    public void insertMyChat(int chatNum, String userName) {
-        chatMapper.insertMyChat(chatNum, userName);
-    };
-
-    public List<ChatDto> getLastChatByUserNum(int userNum) {
-        return chatMapper.getLastChatListByUserNum(userNum);
-    }
-
-    // chat 불러오기
+    // 1. 채팅방 불러오기
     public List<ChatDto> getChatListByUserNum(int userNum) {
         return chatMapper.getChatListByUserNum(userNum);
     }
+
+    // 채팅방 만들기
+    @Override
+    public void insertChatRoomAndJoin(ChatDto chat, int userNum) {
+        // 채팅방 생성
+        chatMapper.insertChatRoom(chat);
+        int chatNum = chat.getChatNum();
+        // 채팅방에 사용자 추가
+//        chatMapper.insertChatJoin(new ChatJoinDto(chatNum, userNum));
+    }
+
+    public void addMessageToChat(MessageDto message) {
+        // 채팅 추가
+        chatMapper.insertMessage(message);
+    }
+
+    // 채팅방 만들기
+//    @Override
+//    @Transactional
+//    public ChatJoinDto createChat(UserDto user) {
+//        // 채팅방 생성
+//        ChatJoinDto chatJoin = new ChatJoinDto();
+//        chatJoin.setUserNum(user.getUserNum());
+//        chatMapper.insertChatJoin(chatJoin);
+//        // 생성된 채팅방의 번호를 가져와서 반환
+//        return chatMapper.getChatByUserNum(user.getUserNum());
+//    }
+
+    // 회원번호로 채팅방번호 불러오기
+//    public ChatJoinDto getChatByUserNum(int userNum) {
+//        return chatMapper.getChatByUserNum(userNum);
+//    };
+
+    // 채팅 추가
+//    public void insertChat(ChatDto chat) {
+//        chatMapper.insertChat(chat);
+//    };
+
+//    public List<ChatDto> getLastChatByUserNum(int userNum) {
+//        return chatMapper.getLastChatListByUserNum(userNum);
+//    }
+
 }
