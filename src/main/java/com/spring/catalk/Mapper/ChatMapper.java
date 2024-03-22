@@ -17,21 +17,20 @@ public interface ChatMapper {
             "WHERE u.userNum = #{userNum}")
     public List<ChatDto> getChatListByUserNum(int userNum);
 
-    // 채팅방 만들기
-    @Insert("INSERT INTO chat(chatName, chatActive, chatDate) VALUES ({#chatName}, 1, NOW())")
+    // 2. 채팅방 만들기
+    @Insert("INSERT INTO chat(chatName, chatActive, chatDate) VALUES (#{chatName}, 1, NOW())")
     @Options(useGeneratedKeys=true, keyProperty="chatNum", keyColumn="chatNum")
     public void insertChatRoom(ChatDto chat);
 
-    // chatjoin에 userNum, chatNum 넣기
+    // 3. chatjoin에 userNum, chatNum 넣기
     @Insert("INSERT INTO chatjoin(chatNum, userNum) VALUES (#{chatNum}, #{userNum})")
     public void insertChatJoin(ChatJoinDto chatJoin);
 
-    // 채팅 추가
+    // 4. 채팅 추가
     @Insert("INSERT INTO message (chatNum, userNum, messageContent, messageTime, messageActive, messageCheck) " +
             "VALUES ( #{chatNum}, #{userNum}, #{messageContent}, NOW(), 1, 1)")
     @Options(useGeneratedKeys=true, keyProperty="messageNum", keyColumn="messageNum")
     public void insertMessage(MessageDto message);
-
 
 
     // 마지막 채팅 불러오기

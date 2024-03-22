@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.spring.catalk.Dto.ChatDto;
 import com.spring.catalk.Dto.ChatJoinDto;
+import com.spring.catalk.Dto.MessageDto;
 import com.spring.catalk.Dto.UserDto;
 import com.spring.catalk.Service.ChatService;
 import com.spring.catalk.Service.UserService;
@@ -48,19 +49,12 @@ public class UserController {
         if (user != null) {
             session.setAttribute("loginUser", user);
 
-            ChatDto chat = new ChatDto();
-            chat.setChatName(user.getUserName());
-
-//            chatService.createChatRoom(chat);
-
-//            ChatJoinDto chatJoin = chatService.createChat(user);
-//            session.setAttribute("chat", chatJoin);
-//
-//            // 나만의 채팅 추가
-//            chat.setChatNum(chatJoin.getChatNum());
-//            chat.setChatName(user.getUserName()); // 현재 날짜 및 시간 설정
-//            chat.setChatContent("나와의 채팅을 시작하라옹!"); // 초기 채팅 내용 설정
-//            chatService.insertChat(chat);
+            // 채팅방 생성 및 사용자 추가
+            int chatNum = chatService.createChatRoomAndJoin(user.getUserName(), user.getUserNum());
+            // 채팅 추가
+            MessageDto message = new MessageDto();
+            message.setMessageContent("나와의 채팅을 시작하라옹!");
+            chatService.addMessageToChat(message, chatNum, user.getUserNum());
 
             return "friend/friend_list";
         } else {

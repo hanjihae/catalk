@@ -15,7 +15,4 @@ public class MessageDto {
 
     private int chatNum;
     private int userNum;
-    private String formattedDate;
-
-    private int chatOrderNum;
 }

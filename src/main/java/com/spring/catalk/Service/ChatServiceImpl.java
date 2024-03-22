@@ -26,18 +26,31 @@ public class ChatServiceImpl implements ChatService {
         return chatMapper.getChatListByUserNum(userNum);
     }
 
-    // 채팅방 만들기
+    // 2+3 채팅방 생성 + chatjoin에 정보 저장
     @Override
-    public void insertChatRoomAndJoin(ChatDto chat, int userNum) {
+    public int createChatRoomAndJoin(String userName, int userNum) {
         // 채팅방 생성
+        ChatDto chat = new ChatDto();
+        chat.setChatName(userName);
         chatMapper.insertChatRoom(chat);
+
+        // 생성된 채팅방의 번호 가져오기
         int chatNum = chat.getChatNum();
+
         // 채팅방에 사용자 추가
-//        chatMapper.insertChatJoin(new ChatJoinDto(chatNum, userNum));
+        ChatJoinDto chatJoin = new ChatJoinDto();
+        chatJoin.setChatNum(chatNum);
+        chatJoin.setUserNum(userNum);
+        chatMapper.insertChatJoin(chatJoin);
+
+        return chatNum;
     }
 
-    public void addMessageToChat(MessageDto message) {
-        // 채팅 추가
+    @Override
+    // 4. 채팅 추가
+    public void addMessageToChat(MessageDto message, int chatNum, int userNum) {
+        message.setChatNum(chatNum);
+        message.setUserNum(userNum);
         chatMapper.insertMessage(message);
     }
 
