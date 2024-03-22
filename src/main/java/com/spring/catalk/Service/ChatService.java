@@ -20,14 +20,7 @@ public interface ChatService {
     // 3. 채팅 추가
     public void addMessageToChat(MessageDto message, int chatNum, int userNum);
 
-    // 채팅방 만들기
-//    public void insertChatRoomAndJoin(ChatDto chat, int userNum);
+    // 4. 모든 메세지 불러오기
+    public List<MessageDto> getMessageListByUserNumAndChatNum(int userNum, int chatNum);
 
-
-    // 채팅방 만들기
-//    public ChatJoinDto createChat(UserDto user);
-
-
-    // 채팅 추가
-//    public void insertChat(ChatDto chat);
 }

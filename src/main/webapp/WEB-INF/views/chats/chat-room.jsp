@@ -28,27 +28,27 @@
             <i class="fas fa-chevron-down"></i>
         </div>
         <main class="chat-screen">
-            <c:forEach var="chat" items="${chatList}" varStatus="loop">
-                <c:if test="${loop.index == 0 || !chat.chatDate.equals(chatList[loop.index - 1].chatDate)}">
+            <c:forEach var="message" items="${messageList}" varStatus="loop">
+                <c:if test="${loop.index == 0 || !message.messageTime.equals(messageList[loop.index - 1].messageTime)}">
                     <div class="date-line">
-                        <time datetime="${chat.chatDate}">${chat.chatDate}</time>
+                        <time datetime="${message.messageTime}">${message.messageTime}</time>
                     </div>
                 </c:if>
                 <div class="wrap">
                     <c:choose>
-                        <c:when test="${!chat.chatName.equals(loginUser.userName)}">
+                        <c:when test="${message.userNum ne loginUser.userNum}">
                             <div class="chat friend-chat">
                                 <div><img src="/img/haeil1.jpeg" class="chat__avatar" /></div>
                                 <div class="chat-text">
-                                    <span class="chat-text__name">${chat.chatName}</span>
-                                    <span class="chat-text__textbox">${chat.chatContent}</span>
+                                    <span class="chat-text__name">${chatName}</span>
+                                    <span class="chat-text__textbox">${message.messageContent}</span>
                                 </div>
                             </div>
                         </c:when>
                         <c:otherwise>
                             <div class="chat my-chat">
                                 <div class="chat-text-me">
-                                    <span class="chat-text__textbox-me">${chat.chatContent}</span>
+                                    <span class="chat-text__textbox-me">${message.messageContent}</span>
                                 </div>
                             </div>
                         </c:otherwise>

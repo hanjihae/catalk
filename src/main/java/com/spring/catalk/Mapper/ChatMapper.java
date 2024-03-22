@@ -47,8 +47,6 @@ public interface ChatMapper {
             "ORDER BY messageNum")
     public List<MessageDto> getMessageListByUserNumAndChatNum(int userNum, int chatNum);
 
-
-
     // 채팅방 불러오기
 //    @Select("SELECT c.chatNum, c.chatName , c.chatActive, c.chatDate, c.chatContent " +
 //            "FROM chat c " +

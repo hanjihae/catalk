@@ -45,7 +45,7 @@ public class ChatController {
             // 마지막 메세지 가져오기
             MessageDto lastMessage = chatService.getLastMessageByUserNumAndChatNum(userNum, chat.getChatNum());
             if (lastMessage != null) {
-                lastMessage.formatMessageDate(); // 각 메시지의 시간을 형식화
+                lastMessage.formatMessageDate();
                 lastMessages.add(lastMessage);
             }
         }
@@ -57,25 +57,34 @@ public class ChatController {
         return "chats/chat-list";
     }
 
-//    @RequestMapping(path={"/chat-room"})
-//    public String chatRoom(HttpSession session, Model model, ChatDto chat) {
-//        UserDto user = (UserDto) session.getAttribute("loginUser");
-//        if (user == null) {
-//            return "redirect:/home";
-//        }
-//        int userNum = user.getUserNum();
-//        List<ChatDto> chatList = chatService.getChatListByUserNum(userNum);
-//
-//        ChatDto firstChat = chatList.get(0); // 예시로 첫 번째 채팅을 가져옴
-//        int chatNum = firstChat.getChatNum();
-//        String chatName = firstChat.getChatName();
-//
-//        model.addAttribute("chatList", chatList);
-//        model.addAttribute("chatNum", chatNum);
-//        model.addAttribute("chatName", chatName);
-//
-//        return "chats/chat-room";
-//    }
+    @RequestMapping(path={"/chat-room"})
+    public String chatRoom(HttpSession session, Model model, int chatNum, String chatName) {
+        UserDto user = (UserDto) session.getAttribute("loginUser");
+        if (user == null) {
+            return "redirect:/home";
+        }
+
+        List<ChatDto> chatList = chatService.getChatListByUserNum(user.getUserNum());
+        String targetChatName = null;
+        for (ChatDto chat : chatList) {
+            if (chat.getChatNum() == chatNum) {
+                targetChatName = chat.getChatName();
+                break;
+            }
+        }
+
+        List<MessageDto> messageList = chatService.getMessageListByUserNumAndChatNum(user.getUserNum(), chatNum);
+
+        model.addAttribute("messageList", messageList);
+        model.addAttribute("chatNum", chatNum);
+        model.addAttribute("chatName", targetChatName); // 수정된 부분
+
+        System.out.println(chatNum);
+        System.out.println(targetChatName);
+
+        return "chats/chat-room";
+    }
+
 
 //    @PostMapping("/sendChat")
 //    public String sendChat(HttpSession session, ChatDto chat) {

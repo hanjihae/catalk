@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.AutoPopulatingList;
 
 import java.util.List;
 
@@ -50,36 +51,20 @@ public class ChatServiceImpl implements ChatService {
         return chatNum;
     }
 
-    @Override
     // 3. 채팅 추가
+    @Override
     public void addMessageToChat(MessageDto message, int chatNum, int userNum) {
         message.setChatNum(chatNum);
         message.setUserNum(userNum);
         chatMapper.insertMessage(message);
     }
 
+    // 4. 모든 메세지 불러오기
+    @Override
+    public List<MessageDto> getMessageListByUserNumAndChatNum(int userNum, int chatNum) {
+        return chatMapper.getMessageListByUserNumAndChatNum(userNum, chatNum);
+    }
 
 
-    // 채팅방 만들기
-//    @Override
-//    @Transactional
-//    public ChatJoinDto createChat(UserDto user) {
-//        // 채팅방 생성
-//        ChatJoinDto chatJoin = new ChatJoinDto();
-//        chatJoin.setUserNum(user.getUserNum());
-//        chatMapper.insertChatJoin(chatJoin);
-//        // 생성된 채팅방의 번호를 가져와서 반환
-//        return chatMapper.getChatByUserNum(user.getUserNum());
-//    }
-
-    // 회원번호로 채팅방번호 불러오기
-//    public ChatJoinDto getChatByUserNum(int userNum) {
-//        return chatMapper.getChatByUserNum(userNum);
-//    };
-
-    // 채팅 추가
-//    public void insertChat(ChatDto chat) {
-//        chatMapper.insertChat(chat);
-//    };
 
 }
