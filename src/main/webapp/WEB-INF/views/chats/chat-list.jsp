@@ -30,13 +30,17 @@
                     <img src="/img/haeil2.jpeg" class="user-component__avatar"/>
                     <div class="user-component__text">
                         <h4 class="user-component__title user-component__title--not-bold">${chat.chatName}</h4>
-                        <h6 class="user-component__subtitle">마지막 메세지 띄워야지용</h6>
+                <c:forEach var="lastMessage" items="${lastMessages}">
+                    <c:if test="${lastMessage.chatNum eq chat.chatNum}">
+                        <h6 class="user-component__subtitle">${lastMessage.messageContent}</h6>
                     </div>
                 </div>
                 <div class="user-component__column">
-                    <span class="user-component__time">${chat.formattedDate}</span>
+                    <span class="user-component__time">${lastMessage.formattedDate}</span>
                     <div class="badge">1</div>
                 </div>
+                    </c:if>
+                </c:forEach>
             </div>
             </c:forEach>
         </main>

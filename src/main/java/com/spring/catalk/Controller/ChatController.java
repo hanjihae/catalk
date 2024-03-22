@@ -2,6 +2,7 @@ package com.spring.catalk.Controller;
 
 import com.spring.catalk.Dto.ChatDto;
 import com.spring.catalk.Dto.ChatJoinDto;
+import com.spring.catalk.Dto.MessageDto;
 import com.spring.catalk.Dto.UserDto;
 import com.spring.catalk.Service.ChatService;
 import jakarta.servlet.http.HttpSession;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 import java.time.Instant;
 import java.time.ZoneId;
@@ -38,12 +40,19 @@ public class ChatController {
         int userNum = user.getUserNum();
         // 채팅 리스트 가져오기
         List<ChatDto> chatList = chatService.getChatListByUserNum(userNum);
+        List<MessageDto> lastMessages = new ArrayList<>();
         for (ChatDto chat : chatList) {
-            chat.formatChatDate();
+            // 마지막 메세지 가져오기
+            MessageDto lastMessage = chatService.getLastMessageByUserNumAndChatNum(userNum, chat.getChatNum());
+            if (lastMessage != null) {
+                lastMessage.formatMessageDate(); // 각 메시지의 시간을 형식화
+                lastMessages.add(lastMessage);
+            }
         }
 
         model.addAttribute("userNum", userNum);
         model.addAttribute("chatList", chatList);
+        model.addAttribute("lastMessages",lastMessages);
 
         return "chats/chat-list";
     }

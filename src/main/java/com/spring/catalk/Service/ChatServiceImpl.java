@@ -21,19 +21,23 @@ public class ChatServiceImpl implements ChatService {
     @Autowired
     private ChatMapper chatMapper;
 
-    // 1. 채팅방 불러오기
+    // 1-1. 채팅방 불러오기
     public List<ChatDto> getChatListByUserNum(int userNum) {
         return chatMapper.getChatListByUserNum(userNum);
     }
 
-    // 2+3 채팅방 생성 + chatjoin에 정보 저장
+    // 1-2. 마지막 메세지 불러오기
+    public MessageDto getLastMessageByUserNumAndChatNum(int userNum, int chatNum) {
+        return chatMapper.getLastMessageByUserNumAndChatNum(userNum, chatNum);
+    }
+
+    // 2. 채팅방 생성 + chatjoin에 정보 저장
     @Override
     public int createChatRoomAndJoin(String userName, int userNum) {
         // 채팅방 생성
         ChatDto chat = new ChatDto();
         chat.setChatName(userName);
         chatMapper.insertChatRoom(chat);
-
         // 생성된 채팅방의 번호 가져오기
         int chatNum = chat.getChatNum();
 
@@ -47,12 +51,14 @@ public class ChatServiceImpl implements ChatService {
     }
 
     @Override
-    // 4. 채팅 추가
+    // 3. 채팅 추가
     public void addMessageToChat(MessageDto message, int chatNum, int userNum) {
         message.setChatNum(chatNum);
         message.setUserNum(userNum);
         chatMapper.insertMessage(message);
     }
+
+
 
     // 채팅방 만들기
 //    @Override
@@ -75,9 +81,5 @@ public class ChatServiceImpl implements ChatService {
 //    public void insertChat(ChatDto chat) {
 //        chatMapper.insertChat(chat);
 //    };
-
-//    public List<ChatDto> getLastChatByUserNum(int userNum) {
-//        return chatMapper.getLastChatListByUserNum(userNum);
-//    }
 
 }
