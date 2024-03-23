@@ -36,7 +36,7 @@
                 </c:if>
                 <div class="wrap">
                     <c:choose>
-                        <c:when test="${message.userNum ne loginUser.userNum}">
+                        <c:when test="${message.userNum ne userNum}">
                             <div class="chat friend-chat">
                                 <div><img src="/img/haeil1.jpeg" class="chat__avatar" /></div>
                                 <div class="chat-text">
@@ -49,6 +49,7 @@
                             <div class="chat my-chat">
                                 <div class="chat-text-me">
                                     <span class="chat-text__textbox-me">${message.messageContent}</span>
+
                                 </div>
                             </div>
                         </c:otherwise>
@@ -56,10 +57,11 @@
                 </div>
             </c:forEach>
             <div class="insert-content">
-                <form name="chatform" action="sendChat" method="post">
+                <form name="chatform" action="sendMessage" method="post">
+                    <input type="hidden" name="userNum" value="${userNum}">
                     <input type="hidden" name="chatNum" value="${chatNum}">
                     <input type="hidden" name="chatName" value="${chatName}">
-                    <textarea name="chatContent" required></textarea>
+                    <textarea name="messageContent" required></textarea>
                     <input type="submit" class="chat-submit" value="전송">
                 </form>
                 <!-- 채팅 입력 관련 기능(파일 첨부, 캡쳐 등) -->

@@ -67,10 +67,16 @@
     flex-direction: column;
     position: relative;
     max-width: 70vw;
+
 }
 
 .chat-text__name {
-    margin-left: 15px;
+    margin: 0 0 0 15px;
+}
+
+.chat-text__textbox-friend {
+    display: flex;
+    align-items: flex-end;
 }
 
 .chat-text__textbox {
@@ -81,6 +87,13 @@
     background-color: black;
     font-size: 1em;
     color: white;
+}
+
+.chat-text__textbox-ftime {
+    margin: 0 0 0.5% 7px;
+    white-space: nowrap;
+    font-size: 13.8px;
+    color: rgba(0,0,0,0.5);
 }
 
 .my-chat {
@@ -97,6 +110,11 @@
     max-width: 70vw;
 }
 
+.chat-text__textbox-mine {
+    display: flex;
+    align-items: flex-end;
+}
+
 .chat-text__textbox-me {
     max-width: fit-content;
     margin: 10px 20px 0 auto;
@@ -106,6 +124,25 @@
     background-color: var(--yellow);
     display: flex;
     flex-direction: column;
+}
+
+.chat-text__textbox-timeandcheck {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.chat-text__textbox-mtime {
+    margin: 0 7px 0.5% 0;
+    white-space: nowrap;
+    font-size: 13.8px;
+    color: rgba(0,0,0,0.5);
+}
+
+.chat-text__textbox-checkornot {
+    margin: 0 5px 5px 0;
+    color: var(--yellow);
+    font-size: 13.8px;
 }
 
 .chat-text__textbox::before {

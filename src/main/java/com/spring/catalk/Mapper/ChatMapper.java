@@ -34,35 +34,17 @@ public interface ChatMapper {
     @Insert("INSERT INTO chatjoin(chatNum, userNum) VALUES (#{chatNum}, #{userNum})")
     public void insertChatJoin(ChatJoinDto chatJoin);
 
-    // 3. 채팅 추가
+    // 3. 메세지 추가
     @Insert("INSERT INTO message (chatNum, userNum, messageContent, messageTime, messageActive, messageCheck) " +
             "VALUES ( #{chatNum}, #{userNum}, #{messageContent}, NOW(), 1, 1)")
     @Options(useGeneratedKeys=true, keyProperty="messageNum", keyColumn="messageNum")
     public void insertMessage(MessageDto message);
 
     // 4. 모든 메세지 불러오기
-    @Select("SELECT * FROM message " +
-            "WHERE userNum = #{userNum} " +
-            "AND chatNum = #{chatNum} " +
-            "ORDER BY messageNum")
-    public List<MessageDto> getMessageListByUserNumAndChatNum(int userNum, int chatNum);
+    @Select("SELECT * FROM message WHERE chatNum = #{chatNum} ORDER BY messageNum")
+    public List<MessageDto> getMessageListByChatNum(int chatNum);
 
-    // 채팅방 불러오기
-//    @Select("SELECT c.chatNum, c.chatName , c.chatActive, c.chatDate, c.chatContent " +
-//            "FROM chat c " +
-//            "INNER JOIN chatjoin cj ON c.chatNum = cj.chatNum " +
-//            "INNER JOIN user u ON cj.userNum = u.userNum " +
-//            "WHERE u.userNum = #{userNum}")
-//    public List<ChatDto> getChatListByUserNum(int userNum);
 
-    // 채팅방 만들기
-//    @Insert("INSERT INTO chat(userNum) VALUES (#{userNum})")
-//    @Options(useGeneratedKeys=true, keyProperty="chatNum", keyColumn="chatNum")
-//    public void insertChatJoin(ChatJoinDto chatJoin);
-
-    // 회원번호로 채팅방번호 불러오기
-//    @Select("SELECT chatNum FROM chatjoin WHERE userNum = #{userNum}")
-//    public ChatJoinDto getChatByUserNum(int userNum);
 
 //    @Select("SELECT c.* FROM chat c " +
 //            "INNER JOIN chatjoin cj WHERE cj.chatNum = #{chatNum}")

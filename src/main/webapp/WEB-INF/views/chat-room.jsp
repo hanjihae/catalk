@@ -35,26 +35,54 @@
                     <div><img src="/img/haeil1.jpeg" class="chat__avatar"/></div>
                     <div class="chat-text">
                         <span class="chat-text__name">해일2</span>
-                        <span class="chat-text__textbox">안녕하세요. 반갑습니다.</span>
-                        <span class="chat-text__textbox">프로젝트 캣톡입니다~~알아 넌 나보다 흘러나오는 이 노래를 듣겠지 이렇게 날 듣겠지 어쩌면 너무 늦었겠지만 어쩌면 너무 늦었겠지만 말도안돼 자신 없단 말은 하지마 어떡해</span>
+                        <div class="chat-text__textbox-friend">
+                            <span class="chat-text__textbox">안녕하세요.</span>
+                            <span class="chat-text__textbox-ftime">오후 4:50</span>
+                        </div>
                     </div>
                 </div>
                 <div class="chat my-chat">
                     <div class="chat-text-me">
-                        <span class="chat-text__textbox-me">안녕하세요. 그동안 잘 지내셨어요?</span>
+                        <div class="chat-text__textbox-mine">
+                            <!-- if messageCheck is false, it cannot visible -->
+                            <div class="chat-text__textbox-timeandcheck">
+                                <!-- <span class="chat-text__textbox-checkornot">1</span> -->
+                                <span class="chat-text__textbox-mtime">오후 4:55</span>
+                            </div>
+                            <span class="chat-text__textbox-me">안녕하세요. 그동안 잘 지내셨어요?</span>
+                        </div>
                     </div>
                 </div>
                 <div class="chat friend-chat">
                     <div><img src="/img/haeil1.jpeg" class="chat__avatar" /></div>
                     <div class="chat-text">
                         <span class="chat-text__name">해일2</span>
-                        <span class="chat-text__textbox">어휴 손시려워 죽겠어요ㅠㅠ</span>
+                        <div class="chat-text__textbox-friend">
+                            <span class="chat-text__textbox">안녕하세요. 반갑습니다.</span>
+                            <span class="chat-text__textbox-ftime">오후 4:56</span>
+                        </div>
+                        <div class="chat-text__textbox-friend">
+                            <span class="chat-text__textbox">프로젝트 캣톡입니다~~알아 넌 나보다 흘러나오는 이 노래를 듣겠지 이렇게 날 듣겠지 어쩌면 너무 늦었겠지만 어쩌면 너무 늦었겠지만 말도안돼 자신 없단 말은 하지마 어떡해</span>
+                            <span class="chat-text__textbox-ftime">오후 4:57</span>
+                        </div>
                     </div>
                 </div>
                 <div class="chat my-chat">
                     <div class="chat-text-me">
-                        <span class="chat-text__textbox-me">왜 벌써 2024년인지 모르겠어요~~~</span>
-                        <span class="chat-text__textbox-me">위에 거 글자수에 맞게 크기 줄어들었음 좋겠는데 왜 아깐 되고 지금은 안되냔 말이냐~이 말만 벌써 오백번 한 것 같아요. 진짜 테스트용으로 쓸말 더럽게 없다. 길면 텍스트가 이렇게 됩니다. </span>
+                        <div class="chat-text__textbox-mine">
+                            <div class="chat-text__textbox-timeandcheck">
+                                <span class="chat-text__textbox-checkornot">1</span>
+                                <span class="chat-text__textbox-mtime">오후 5:00</span>
+                            </div>
+                            <span class="chat-text__textbox-me">왜 벌써 2024년인지 모르겠어요~~~</span>
+                        </div>
+                        <div class="chat-text__textbox-mine">
+                            <div class="chat-text__textbox-timeandcheck">
+                                <span class="chat-text__textbox-checkornot">1</span>
+                                <span class="chat-text__textbox-mtime">오후 5:02</span>
+                            </div>
+                            <span class="chat-text__textbox-me">위에 거 글자수에 맞게 크기 줄어들었음 좋겠는데 왜 아깐 되고 지금은 안되냔 말이냐~이 말만 벌써 오백번 한 것 같아요. 진짜 테스트용으로 쓸말 더럽게 없다. 길면 텍스트가 이렇게 됩니다. </span>
+                        </div>
                     </div>
                 </div>
             </div>

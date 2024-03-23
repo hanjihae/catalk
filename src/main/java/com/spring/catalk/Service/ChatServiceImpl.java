@@ -61,8 +61,8 @@ public class ChatServiceImpl implements ChatService {
 
     // 4. 모든 메세지 불러오기
     @Override
-    public List<MessageDto> getMessageListByUserNumAndChatNum(int userNum, int chatNum) {
-        return chatMapper.getMessageListByUserNumAndChatNum(userNum, chatNum);
+    public List<MessageDto> getMessageListByChatNum(int chatNum) {
+        return chatMapper.getMessageListByChatNum(chatNum);
     }
 
 

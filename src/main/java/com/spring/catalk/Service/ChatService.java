@@ -21,6 +21,6 @@ public interface ChatService {
     public void addMessageToChat(MessageDto message, int chatNum, int userNum);
 
     // 4. 모든 메세지 불러오기
-    public List<MessageDto> getMessageListByUserNumAndChatNum(int userNum, int chatNum);
+    public List<MessageDto> getMessageListByChatNum(int chatNum);
 
 }

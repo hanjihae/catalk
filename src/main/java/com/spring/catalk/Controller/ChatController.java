@@ -58,11 +58,12 @@ public class ChatController {
     }
 
     @RequestMapping(path={"/chat-room"})
-    public String chatRoom(HttpSession session, Model model, int chatNum, String chatName) {
+    public String chatRoom(HttpSession session, Model model, int chatNum) {
         UserDto user = (UserDto) session.getAttribute("loginUser");
         if (user == null) {
             return "redirect:/home";
         }
+        int userNum = user.getUserNum();
 
         List<ChatDto> chatList = chatService.getChatListByUserNum(user.getUserNum());
         String targetChatName = null;
@@ -73,23 +74,21 @@ public class ChatController {
             }
         }
 
-        List<MessageDto> messageList = chatService.getMessageListByUserNumAndChatNum(user.getUserNum(), chatNum);
+        List<MessageDto> messageList = chatService.getMessageListByChatNum(chatNum);
 
+        model.addAttribute("userNum", userNum);
         model.addAttribute("messageList", messageList);
         model.addAttribute("chatNum", chatNum);
         model.addAttribute("chatName", targetChatName); // 수정된 부분
-
-        System.out.println(chatNum);
-        System.out.println(targetChatName);
 
         return "chats/chat-room";
     }
 
 
-//    @PostMapping("/sendChat")
-//    public String sendChat(HttpSession session, ChatDto chat) {
-//        chatService.insertChat(chat);
-//        return "redirect:/chats/chat-room?chatNum=" + chat.getChatNum();
-//    }
+    @PostMapping("/sendMessage")
+    public String sendChat(HttpSession session, MessageDto message, int chatNum, int userNum) {
+        chatService.addMessageToChat(message, chatNum, userNum);
+        return "redirect:/chats/chat-room?chatNum=" + chatNum;
+    }
 
 }
