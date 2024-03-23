@@ -103,5 +103,21 @@
         </main>
 
         <script src="https://kit.fontawesome.com/3aeedf8ddf.js" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            function adjustInsertContentPosition() {
+                var insertContent = document.querySelector('.insert-content');
+                var chatScreen = document.querySelector('.chat-screen');
+
+                console.log(chatScreen.children.length);
+                if (chatScreen.children.length < 3 ) {
+                    insertContent.style.position = 'fixed';
+                } else {
+                    insertContent.style.position = 'sticky';
+                }
+            }
+
+            adjustInsertContentPosition();
+
+        </script>
     </body>
 </html>

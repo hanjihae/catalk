@@ -166,10 +166,8 @@
 .insert-content{
     background-color: white;
     padding: 0.4375rem;
-    position: fixed; /* fixed로 변경 */
+    width: 100%;
     bottom: 0;
-    width: 100%; /* 가로 너비를 100%로 설정 */
-    z-index: 999;
     border-top: 1px solid rgba(121,121,121,0.3);
 }
 
