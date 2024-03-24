@@ -75,6 +75,10 @@ public class ChatController {
         }
 
         List<MessageDto> messageList = chatService.getMessageListByChatNum(chatNum);
+        for (MessageDto message : messageList) {
+            message.formatMessageTime();
+            message.formatMessageDate2();
+        }
 
         model.addAttribute("userNum", userNum);
         model.addAttribute("messageList", messageList);

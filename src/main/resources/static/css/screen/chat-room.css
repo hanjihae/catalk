@@ -36,9 +36,9 @@
     margin: 0 10px; /* 선 사이의 여백을 조절합니다 */
 }
 
-.wrap {
-    padding: 20px 0;
-}
+/*.wrap {*/
+/*    padding: 20px 0;*/
+/*}*/
 
 .chat__avatar {
     width: 55px;
@@ -50,7 +50,7 @@
 .wrap .chat {
     display: flex;
     align-items: flex-start;
-    padding: 10px 0 10px 15px;
+    /*padding: 10px 0 10px 15px;*/
 }
 
 
@@ -81,7 +81,7 @@
 
 .chat-text__textbox {
     max-width: fit-content;
-    margin: 10px 0 0 15px;
+    margin: 5px 0 0 15px;
     padding: 8px;
     border-radius: 9px;
     background-color: black;
@@ -117,7 +117,7 @@
 
 .chat-text__textbox-me {
     max-width: fit-content;
-    margin: 10px 20px 0 auto;
+    margin: 5px 20px 0 auto;
     padding: 8px;
     border-radius: 9px;
     font-size: 1em;
@@ -162,6 +162,7 @@
     top: 15px;
     right: 10px;
 }
+
 
 .insert-content{
     background-color: white;

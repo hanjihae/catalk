@@ -29,9 +29,9 @@
         </div>
         <main class="chat-screen">
             <c:forEach var="message" items="${messageList}" varStatus="loop">
-                <c:if test="${loop.index == 0 || !message.messageTime.equals(messageList[loop.index - 1].messageTime)}">
+                <c:if test="${loop.index == 0 || !message.formattedDate2.equals(messageList[loop.index - 1].formattedDate2)}">
                     <div class="date-line">
-                        <time datetime="${message.messageTime}">${message.messageTime}</time>
+                        <time datetime="${message.messageTime}">${message.formattedDate2}</time>
                     </div>
                 </c:if>
                 <div class="wrap">
@@ -41,15 +41,33 @@
                                 <div><img src="/img/haeil1.jpeg" class="chat__avatar" /></div>
                                 <div class="chat-text">
                                     <span class="chat-text__name">${chatName}</span>
-                                    <span class="chat-text__textbox">${message.messageContent}</span>
+                                    <div class="chat-text__textbox-friend">
+                                        <span class="chat-text__textbox">${message.messageContent}</span>
+                                        <span class="chat-text__textbox-ftime">오후 4:56</span>
+                                    </div>
                                 </div>
                             </div>
                         </c:when>
                         <c:otherwise>
                             <div class="chat my-chat">
                                 <div class="chat-text-me">
-                                    <span class="chat-text__textbox-me">${message.messageContent}</span>
-
+                                    <div class="chat-text__textbox-mine">
+                                        <div class="chat-text__textbox-timeandcheck">
+                                            <c:choose>
+                                                <c:when test="${message.messageCheck}">
+                                                    <span class="chat-text__textbox-checkornot">1</span>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <span type="hidden" class="chat-text__textbox-checkornot"></span>
+                                                </c:otherwise>
+                                            </c:choose>
+                                            <c:if test="${loop.index + 1 == messageList.size() || !message.formattedTime.equals(messageList[loop.index + 1].formattedTime)}">
+                                                <span class="chat-text__textbox-mtime">${message.formattedTime}</span>
+                                            </c:if>
+                                        </div>
+                                        <span style="display: none" class="message-num">${message.messageNum}</span>
+                                        <span class="chat-text__textbox-me">${message.messageContent}</span>
+                                    </div>
                                 </div>
                             </div>
                         </c:otherwise>
@@ -77,6 +95,7 @@
 
         <script src="https://kit.fontawesome.com/3aeedf8ddf.js" crossorigin="anonymous"></script>
         <script type="text/javascript">
+
             function adjustInsertContentPosition() {
                 var insertContent = document.querySelector('.insert-content');
                 var chatScreen = document.querySelector('.chat-screen');
@@ -88,8 +107,19 @@
                     insertContent.style.position = 'sticky';
                 }
             }
-
             adjustInsertContentPosition();
+
+            // 최근 메시지로 스크롤 이동
+            function scrollToRecentMessage() {
+                var chatTexts = document.querySelectorAll('.chat-text__textbox');
+                var lastChatText = chatTexts[chatTexts.length - 1];
+                lastChatText.scrollIntoView();
+            }
+
+            // 페이지 로드 후 최근 메시지로 스크롤 이동
+            window.addEventListener('load', function() {
+                scrollToRecentMessage();
+            });
 
         </script>
     </body>

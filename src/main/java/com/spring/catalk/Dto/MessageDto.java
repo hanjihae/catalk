@@ -2,6 +2,7 @@ package com.spring.catalk.Dto;
 
 import lombok.Data;
 
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -22,7 +23,10 @@ public class MessageDto {
     private int userNum;
 
     private String formattedDate;
+    private String formattedDate2;
+    private String formattedTime;
 
+    // chat-list formattedDate2
     public void formatMessageDate() {
         LocalDateTime currentDate = LocalDateTime.now();
         Date date = this.messageTime;
@@ -48,4 +52,26 @@ public class MessageDto {
         }
         this.formattedDate = formattedDateString;
     }
+
+    // chat-room formattedDate
+    public void formatMessageDate2() {
+        LocalDateTime currentDate = LocalDateTime.now();
+        Date date = this.messageTime;
+        Instant instant = date.toInstant();
+        LocalDateTime parsedChatDate = instant.atZone(ZoneId.systemDefault()).toLocalDateTime();
+
+        String formattedDateString = parsedChatDate.getYear() + "년 "
+                + parsedChatDate.getMonthValue() + "월 "
+                + parsedChatDate.getDayOfMonth() + "일";
+
+        this.formattedDate2 = formattedDateString;
+    }
+
+    // chat-room formattedTime
+    public void formatMessageTime() {
+        LocalDateTime localDateTime = messageTime.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("a hh:mm");
+        this.formattedTime = sdf.format(Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant()));
+    }
+
 }
