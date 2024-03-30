@@ -15,11 +15,6 @@ public class HomeController {
         return "chats";
     }
 
-    @GetMapping(path = {"/my-profile"})
-    public String profile() {
-        return "my-profile";
-    }
-
     @GetMapping(path = {"/chat-room"})
     public String chatRoom() {
         return "chat-room";

@@ -110,16 +110,8 @@
                 });
             }
 
-            function findInput(){ //검색어 입력되면 결과 화면에 보여주기
-                var searchVal = document.getElementById('findInput').value;
-
-                //검색해서 나온 친구후보들을 화면에 어떻게 보여주고 어떻게 선택하게 할지 고민됨
-
-
-            }
-
             function moveToProfile(userNum){ // 프로필 창으로 이동
-                location.href="/my-profile?userNum="+userNum;
+                location.href="/profile/profileMain?userNum="+userNum;
             }
 
         </script>
