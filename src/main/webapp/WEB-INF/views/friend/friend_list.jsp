@@ -24,8 +24,11 @@
             </div>
         </header>
         <div class="search-container">
-            <input type="text" id="searchInput" placeholder="이름으로 검색" onInput="searchInput();">
-        </div>
+            <div class="search-wrapper">
+                <input type="text" id="searchInput" placeholder="이름으로 검색" onInput="searchInput();">
+                <span class="search-icon"><i class="fas fa-search"></i></span>
+            </div>
+            </div>
         <div id="searchResults">
             <div class="user-component__column">
                 <img src="/img/smile_cat.png" class="user-component__avatar"/>
@@ -73,12 +76,17 @@
 
             function showSearchInput(){
                 var friendSearchIcon = document.getElementById('searchInput');
+                var realSearchIcon = document.querySelector('.search-icon');
                 if (friendSearchIcon.style.display === 'none') {
                     friendSearchIcon.style.display = 'block';
+                    realSearchIcon.style.display = 'inline-block';
                 } else {
                     friendSearchIcon.style.display = 'none';
+                    realSearchIcon.style.display = 'none';
                 }
             }
+
+
 
             function showFindInput(){
                 var popup = window.open('/friend/findFriendPopup', '친구 찾기', 'width=700px,height=800px,scrollbars=no,resizable=no');

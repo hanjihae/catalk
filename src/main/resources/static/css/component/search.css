@@ -1,16 +1,35 @@
 .search-container {
-    text-align: center;
+    width: 90vw;
+    display: block;
+    margin: -10px auto 15px;
+}
+
+.search-wrapper {
+    position: relative;
 }
 
 #searchInput {
-    display:none;
+    display: none;
     outline: none;
-    width: 90vw;
-    padding: 10px;
+    margin-right: 13px;
+    width: 82vw;
+    padding: 15px 15px 15px 45px;
+    border-radius: 20px;
+    border: 1px solid black;
 }
 
 #searchInput:focus {
     outline: var(--yellow);
+}
+
+.search-icon {
+    display: none;
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: black;
+    pointer-events: none;
 }
 
 #findInput {
