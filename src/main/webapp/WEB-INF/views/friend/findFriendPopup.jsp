@@ -44,25 +44,31 @@
 
         </script>
     </head>
-    <body class="height-100vh">
+    <body class="friends-screen">
         <header class="welcome-header">
             <img src="/img/logo.png" class="welcome-header__logo" />
             <h1 class="welcome-header__title">Find Your Friends</h1>
             <p class="welcome-header__text">캣톡 친구를 찾아보라옹</p>
         </header>
+        <div class="search-container">
             <input type="text" placeholder="친구 이름" id="findFriendSearch" />
-            <input type="submit" value="친구 찾기" onClick="findUserData();" />
-            <input type="submit" value="닫기" onClick="closePopup();" />
-        <table>
+            <input class="searchBtn" type="submit" value="친구찾기" onClick="findUserData();" />
+            <input class="searchBtn" type="submit" value="닫기" onClick="closePopup();" />
+        </div>
         <c:forEach var="userList" items="${userList}">
-            <tr>
-                <td><img src="/img/smile_cat.png" class="user-component__avatar"/></td>
-                <td>${userList.userName}</td>
-                <td>${userList.userPhone}</td>
-                <td><input type="submit" value="친구추가" onClick="addNewFriend(${userList.userNum});" /></td>
-            </tr>
+            <div class="user-component">
+                <div class="user-component__column">
+                    <img src="/img/smile_cat.png" class="user-component__avatar user-component__avatar--xl"/>
+                    <div class="user-component__text">
+                        <h4 class="user-component__title">${userList.userName}</h4>
+                        <h6 class="user-component__subtitle">${userList.userPhone}</h6>
+                    </div>
+                </div>
+                <div class="user-component__column">
+                    <input class="friend-plusBtn" type="submit" value="친구추가" onClick="addNewFriend(${userList.userNum});" />
+                </div>
+            </div>
         </c:forEach>
-        </table>
         <script src="https://kit.fontawesome.com/3aeedf8ddf.js" crossorigin="anonymous"></script>
     </body>
 </html>

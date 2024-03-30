@@ -100,8 +100,9 @@
                 var insertContent = document.querySelector('.insert-content');
                 var chatScreen = document.querySelector('.chat-screen');
 
+                // 수정 필요함~
                 console.log(chatScreen.children.length);
-                if (chatScreen.children.length <= 7 ) {
+                if (chatScreen.children.length <= 10 ) {
                     insertContent.style.position = 'fixed';
                 } else {
                     insertContent.style.position = 'sticky';
@@ -109,16 +110,27 @@
             }
             adjustInsertContentPosition();
 
-            // 최근 메시지로 스크롤 이동
-            function scrollToRecentMessage() {
-                var chatTexts = document.querySelectorAll('.chat-text__textbox');
-                var lastChatText = chatTexts[chatTexts.length - 1];
-                lastChatText.scrollIntoView();
-            }
+            document.addEventListener("DOMContentLoaded", function() {
+                // 최근 메시지로 스크롤 이동
+                function scrollToRecentMessage() {
+                    var chatScreen = document.querySelector('.chat-screen');
+                    if (chatScreen) {
+                        chatScreen.scrollTop = chatScreen.scrollHeight;
+                    } else {
+                        console.log("채팅방 요소를 찾을 수 없습니다.");
+                    }
+                }
 
-            // 페이지 로드 후 최근 메시지로 스크롤 이동
-            window.addEventListener('load', function() {
-                scrollToRecentMessage();
+                // 페이지 로드 후 최근 메시지로 스크롤 이동
+                window.addEventListener('load', function() {
+                    scrollToRecentMessage();
+                });
+
+                // 채팅방에 들어갈 때도 최근 메시지로 스크롤 이동
+                // window.addEventListener('hashchange', function() {
+                //     scrollToRecentMessage();
+                // });
+
             });
 
         </script>

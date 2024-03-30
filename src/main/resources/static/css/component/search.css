@@ -33,3 +33,51 @@
     display: none;
     margin-top: 20px;
 }
+
+#findFriendSearch {
+    width: 70vw;
+    padding: 20px 15px;
+    margin: 35px 5px;
+    border-radius: 30px;
+    border: 1px solid black;
+}
+
+#findFriendSearch:hover {
+    border: 1px solid var(--yellow);
+}
+
+.searchBtn {
+    margin: 10px 4px 10px 0;
+    background-color: black;
+    color: white;
+    border-radius: 24px;
+    padding: 18px 0;
+    width: 70px;
+    border: none;
+    transition-property: background-color, color;
+    transition-duration: 0.15s;
+    transition-timing-function: linear;
+    text-align: center;
+}
+
+.searchBtn:hover {
+    background-color: var(--yellow);
+}
+
+.friend-plusBtn {
+    background-color: white;
+    color: black;
+    border-radius: 24px;
+    padding: 8px 0;
+    width: 70px;
+    border: 1px solid black;
+    transition-property: background-color, color;
+    transition-duration: 0.15s;
+    transition-timing-function: linear;
+    text-align: center;
+}
+
+.friend-plusBtn:hover {
+    color: var(--yellow);
+    border: 1px solid var(--yellow);
+}

@@ -68,11 +68,15 @@
                 var chatRooms = document.querySelectorAll('.user-component');
                 var userNum = <%= request.getAttribute("userNum") %>;
                 chatRooms.forEach(function (chatRoom) {
-                    chatRoom.addEventListener('click', function() {
+                    chatRoom.addEventListener('click', function(event) {
+                        event.preventDefault();
                         var chatNum = chatRoom.getAttribute('data-no');
-                        window.location.href = 'chat-room?userNum='+ userNum +'&chatNum=' + chatNum;
+                        var url = 'chat-room?userNum=' + userNum + '&chatNum=' + chatNum;
+                        // 새 탭에서 채팅방 열기
+                        window.open(url, '_blank');
                     });
                 });
+
 
                 // 채팅방 만들기 아이콘 클릭시 채팅방 만들기 modal
                 var createChat = document.querySelector('.create-chat');
