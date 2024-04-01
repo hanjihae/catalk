@@ -9,7 +9,7 @@
         border-radius: 50px;
         border: 1px solid black;
         right: 50%;
-        transform: translate(50%, -5%);
+        transform: translate(10vw, -5%);
         bottom: 5px;
     }
 
@@ -41,7 +41,7 @@
         background-color: white;
         position: fixed;
         right: 15vw;
-        transform: translate(50%, -5%);
+        transform: translate(10vw, -5%);
         bottom: 3vh;
         padding: 25px 75px;
         border-radius: 50px;

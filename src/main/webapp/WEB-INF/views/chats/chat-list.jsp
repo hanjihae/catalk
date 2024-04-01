@@ -60,10 +60,26 @@
             </ul>
         </nav>
 
+        <div id="create-chatroom__modal" class="modal">
+            <div class="modal-content">
+                <i class="fas fa-circle fa-lg close"></i>
+                <div class="modal-title">New Chatting</div>
+                <div class="modal-buttons">
+                    <a id="normalChatBtn" class="modal-button">
+                        <i class="far fa-comment fa-lg"></i>
+                        <span>일반채팅</span>
+                    </a>
+                    <a id="teamChatBtn" class="modal-button">
+                        <i class="far fa-flag fa-lg"></i>
+                        <span>팀채팅</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <script src="https://kit.fontawesome.com/3aeedf8ddf.js" crossorigin="anonymous"></script>
         <script type="text/javascript">
             document.addEventListener('DOMContentLoaded', function () {
-
                 // 채팅방 클릭시 해당 채팅방으로 이동
                 var chatRooms = document.querySelectorAll('.user-component');
                 var userNum = <%= request.getAttribute("userNum") %>;
@@ -77,12 +93,37 @@
                     });
                 });
 
+                // 채팅방 만들기 - 모달 열기
+                var createChatModal = document.getElementById('create-chatroom__modal');
+                var createChatBtn = document.querySelector('.create-chat');
+                var closeModalSpan = document.querySelector('.close');
 
-                // 채팅방 만들기 아이콘 클릭시 채팅방 만들기 modal
-                var createChat = document.querySelector('.create-chat');
-                 createChat.addEventListener('click', function() {
-                     alert('Create chat clicked!');
-                 });
+                createChatBtn.onclick = function() {
+                    createChatModal.style.display = 'block';
+                }
+
+                // 채팅방 만들기 - 모달 닫기
+                closeModalSpan.onclick = function() {
+                    createChatModal.style.display = 'none';
+                }
+
+                // 채팅방 만들기 - 모달 바깥 영역 클릭 시 닫기
+                window.onclick = function(event) {
+                    if (event.target == createChatModal) {
+                        createChatModal.style.display = 'none';
+                    }
+                }
+
+                var normalChat = document.getElementById('normalChatBtn');
+                var teamChat = document.getElementById('teamChatBtn');
+
+                normalChat.onclick = function () {
+                    window.open('/chats/selectFriendPopup');
+                }
+
+                teamChat.onclick = function () {
+                    window.open('/chats/selectTeamPopup');
+                }
             });
         </script>
     </body>

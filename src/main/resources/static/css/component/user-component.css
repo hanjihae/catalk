@@ -88,3 +88,18 @@
     margin-bottom: 10px;
     display: block;
 }
+
+.user-component__column-checkbox {
+    width: 1.3rem;
+    height: 1.3rem;
+    border-radius: 50%;
+    border: 1px solid #999;
+    appearance: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.user-component__column-checkbox:checked {
+    background: var(--yellow);
+    border: none;
+}

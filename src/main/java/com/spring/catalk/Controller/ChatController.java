@@ -1,10 +1,9 @@
 package com.spring.catalk.Controller;
 
-import com.spring.catalk.Dto.ChatDto;
-import com.spring.catalk.Dto.ChatJoinDto;
-import com.spring.catalk.Dto.MessageDto;
-import com.spring.catalk.Dto.UserDto;
+import com.spring.catalk.Dto.*;
 import com.spring.catalk.Service.ChatService;
+import com.spring.catalk.Service.FriendService;
+import com.spring.catalk.Service.ProfileService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -28,9 +28,18 @@ import java.util.Date;
 public class ChatController {
 
     @Autowired
+    @Qualifier("friendService")
+    private FriendService friendService;
+
+    @Autowired
+    @Qualifier("profileService")
+    private ProfileService profileService;
+
+    @Autowired
     @Qualifier("chatService")
     private ChatService chatService;
 
+    // 채팅 목록
     @RequestMapping(path={"/chat-list"})
     public String chats(HttpSession session, Model model) {
         UserDto user = (UserDto) session.getAttribute("loginUser");
@@ -57,6 +66,7 @@ public class ChatController {
         return "chats/chat-list";
     }
 
+    // 채팅방
     @RequestMapping(path={"/chat-room"})
     public String chatRoom(HttpSession session, Model model, int chatNum) {
         UserDto user = (UserDto) session.getAttribute("loginUser");
@@ -89,10 +99,52 @@ public class ChatController {
     }
 
 
+    // 메세지 보내기
     @PostMapping("/sendMessage")
     public String sendChat(HttpSession session, MessageDto message, int chatNum, int userNum) {
         chatService.addMessageToChat(message, chatNum, userNum);
         return "redirect:/chats/chat-room?chatNum=" + chatNum;
+    }
+
+    //유저+프로필 정보 가져오기, 친구 리스트 가져오기 (by ys)
+    private void getUserInfo (HttpSession session, Model model) {
+        UserDto user = (UserDto) session.getAttribute("loginUser");
+        ProfileDto profile = profileService.findUserProfile(user.getUserNum());
+        List<FriendDto> friends = friendService.findFriendList(user.getUserNum());
+        int friendCount = friendService.findFriendCount(user.getUserNum());
+
+        model.addAttribute("profile", profile);
+        model.addAttribute("friends", friends);
+        model.addAttribute("friendCount", friendCount);
+    }
+
+    // 일반채팅
+    @RequestMapping(path = {"/selectFriendPopup"})
+    public String selectFriendPopup(HttpSession session, Model model) {
+        getUserInfo(session, model);
+        return "chats/selectFriendPopup";
+    }
+
+    // 팀채팅
+    @RequestMapping(path = {"/selectTeamPopup"})
+    public String selectTeamPopup(HttpSession session, Model model) {
+        getUserInfo(session, model);
+        return "chats/selectTeamPopup";
+    }
+
+    // 친구 목록 (by ys)
+    @RequestMapping(value ="/friend_list_inner")
+    public String findMyFriend(String searchVal, HttpSession session, Model model) throws IOException {
+        UserDto user = (UserDto) session.getAttribute("loginUser");
+        ProfileDto profile = profileService.findUserProfile(user.getUserNum());
+        List<FriendDto> friends = friendService.findMyFriendList(user.getUserNum(), searchVal);
+        int friendCount = friendService.findMyFriendCount(user.getUserNum(), searchVal);
+
+        model.addAttribute("profile", profile);
+        model.addAttribute("friends", friends);
+        model.addAttribute("friendCount", friendCount);
+
+        return "chats/friend_list_inner";
     }
 
 }
