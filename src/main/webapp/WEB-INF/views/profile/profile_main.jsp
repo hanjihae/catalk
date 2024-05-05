@@ -32,19 +32,19 @@
                     <li class="nav-profile__btn">
                         <a class="nav-profile__link" href="#">
                             <i class="fas fa-comment fa-lg"></i>
-                            <h6 class="nav-profile__link-title">나와의 채팅</h6>
+                            <h6 class="nav-profile__link-title">1:1 채팅</h6>
                         </a>
                     </li>
-                    <li class="nav-profile__btn">
+                    <!--<li class="nav-profile__btn">
                         <a class="nav-profile__link" href="#">
                             <i class="fas fa-pen fa-lg"></i>
                             <h6 class="nav-profile__link-title">프로필 편집</h6>
                         </a>
-                    </li>
+                    </li>-->
                     <li class="nav-profile__btn">
                         <a class="nav-profile__link" href="#">
                             <i class="fas fa-blog fa-lg"></i>
-                            <h6 class="nav-profile__link-title">마이블로그</h6>
+                            <h6 class="nav-profile__link-title">친구 블로그</h6>
                         </a>
                     </li>
                 </ul>

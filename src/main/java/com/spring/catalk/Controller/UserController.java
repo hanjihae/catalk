@@ -7,6 +7,7 @@ import com.spring.catalk.Dto.ChatJoinDto;
 import com.spring.catalk.Dto.MessageDto;
 import com.spring.catalk.Dto.UserDto;
 import com.spring.catalk.Service.ChatService;
+import com.spring.catalk.Service.ProfileService;
 import com.spring.catalk.Service.UserService;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -33,6 +34,10 @@ public class UserController {
     @Qualifier("chatService")
     private ChatService chatService;
 
+    @Autowired
+    @Qualifier("profileService")
+    private ProfileService profileService;
+
     @RequestMapping("/showSignUp") //로그인창에서 가입하기 누르면 가입창 보여줌
     public String showSignUp(){
         return "user/sign-up";
@@ -55,6 +60,9 @@ public class UserController {
             MessageDto message = new MessageDto();
             message.setMessageContent("나와의 채팅을 시작하라옹!");
             chatService.addMessageToChat(message, chatNum, user.getUserNum());
+
+            // 기본 프로필 생성
+            profileService.createBasicProfile(user.getUserNum(), user.getUserName());
 
             return "friend/friend_list";
         } else {

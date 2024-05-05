@@ -39,7 +39,7 @@
             </div>
         </div>
         <main class="friends-screen">
-            <div class="user-component" onClick="moveToProfile(${loginUser.userNum});">
+            <div class="user-component" onClick="moveToMyProfile(${loginUser.userNum});">
                 <div class="user-component__column">
                     <img src="/img/smile_cat.png" class="user-component__avatar user-component__avatar--xl"/>
                     <div class="user-component__text">
@@ -108,6 +108,9 @@
                 .catch(error => {
                     console.error('There has been a problem with your fetch operation:', error);
                 });
+            }
+            function moveToMyProfile(userNum){ // 프로필 창으로 이동
+                location.href="/profile/profileMine?userNum="+userNum;
             }
 
             function moveToProfile(userNum){ // 프로필 창으로 이동
